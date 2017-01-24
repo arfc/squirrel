@@ -4,6 +4,8 @@
 #include "ModulesApp.h"
 #include "MooseSyntax.h"
 
+#include "ConservativeAdvection.h"
+
 template<>
 InputParameters validParams<SquirrelApp>()
 {
@@ -45,6 +47,7 @@ extern "C" void SquirrelApp__registerObjects(Factory & factory) { SquirrelApp::r
 void
 SquirrelApp::registerObjects(Factory & factory)
 {
+  registerKernel(ConservativeAdvection);
 }
 
 // External entry point for dynamic syntax association
