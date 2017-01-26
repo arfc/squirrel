@@ -4,7 +4,17 @@
 #include "ModulesApp.h"
 #include "MooseSyntax.h"
 
+// kernels
 #include "ConservativeAdvection.h"
+#include "MatDiffusion.h"
+#include "NonConservativeAdvection.h"
+
+// dgkernels
+#include "DGMatDiffusion.h"
+#include "DGTemperatureAdvection.h"
+
+// boundary conditions
+#include "DGFunctionMatDiffusionDirichletBC.h"
 
 template<>
 InputParameters validParams<SquirrelApp>()
@@ -48,6 +58,11 @@ void
 SquirrelApp::registerObjects(Factory & factory)
 {
   registerKernel(ConservativeAdvection);
+  registerKernel(NonConservativeAdvection);
+  registerKernel(MatDiffusion);
+  registerDGKernel(DGMatDiffusion);
+  registerDGKernel(DGTemperatureAdvection);
+  registerBoundaryCondition(DGFunctionMatDiffusionDirichletBC);
 }
 
 // External entry point for dynamic syntax association
