@@ -14,6 +14,10 @@
 
 // boundary conditions
 #include "OutflowBC.h"
+#include "TemperatureOutflowBC.h"
+#include "InflowBC.h"
+#include "TemperatureInflowBC.h"
+#include "RobinBC.h"
 
 template<>
 InputParameters validParams<SquirrelApp>()
@@ -60,7 +64,11 @@ SquirrelApp::registerObjects(Factory & factory)
   registerKernel(ConservativeTemperatureAdvection);
   registerKernel(MatDiffusion);
   registerDGKernel(DGTemperatureAdvection);
+  registerBoundaryCondition(RobinBC);
   registerBoundaryCondition(OutflowBC);
+  registerBoundaryCondition(TemperatureOutflowBC);
+  registerBoundaryCondition(InflowBC);
+  registerBoundaryCondition(TemperatureInflowBC);
 }
 
 // External entry point for dynamic syntax association
