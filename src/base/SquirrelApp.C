@@ -12,6 +12,9 @@
 // dgkernels
 #include "DGTemperatureAdvection.h"
 
+// aux kernels
+#include "Density.h"
+
 // boundary conditions
 #include "OutflowBC.h"
 #include "TemperatureOutflowBC.h"
@@ -64,6 +67,7 @@ SquirrelApp::registerObjects(Factory & factory)
   registerKernel(ConservativeTemperatureAdvection);
   registerKernel(MatDiffusion);
   registerDGKernel(DGTemperatureAdvection);
+  registerAuxKernel(Density);
   registerBoundaryCondition(RobinBC);
   registerBoundaryCondition(OutflowBC);
   registerBoundaryCondition(TemperatureOutflowBC);
