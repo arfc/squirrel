@@ -8,6 +8,7 @@
 #include "ConservativeTemperatureAdvection.h"
 #include "MatDiffusion.h"
 #include "NonConservativeAdvection.h"
+#include "PotentialAdvection.h"
 
 // dgkernels
 #include "DGTemperatureAdvection.h"
@@ -21,6 +22,11 @@
 #include "InflowBC.h"
 #include "TemperatureInflowBC.h"
 #include "RobinBC.h"
+#include "ExampleShapeSideIntegratedBC.h"
+
+// user objects
+#include "NumShapeSideUserObject.h"
+#include "DenomShapeSideUserObject.h"
 
 template<>
 InputParameters validParams<SquirrelApp>()
@@ -63,16 +69,20 @@ extern "C" void SquirrelApp__registerObjects(Factory & factory) { SquirrelApp::r
 void
 SquirrelApp::registerObjects(Factory & factory)
 {
+  registerKernel(PotentialAdvection);
   registerKernel(NonConservativeAdvection);
   registerKernel(ConservativeTemperatureAdvection);
   registerKernel(MatDiffusion);
   registerDGKernel(DGTemperatureAdvection);
   registerAuxKernel(Density);
+  registerBoundaryCondition(ExampleShapeSideIntegratedBC);
   registerBoundaryCondition(RobinBC);
   registerBoundaryCondition(OutflowBC);
   registerBoundaryCondition(TemperatureOutflowBC);
   registerBoundaryCondition(InflowBC);
   registerBoundaryCondition(TemperatureInflowBC);
+  registerUserObject(NumShapeSideUserObject);
+  registerUserObject(DenomShapeSideUserObject);
 }
 
 // External entry point for dynamic syntax association
