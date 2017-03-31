@@ -31,6 +31,6 @@ Real ConservativeTemperatureAdvection::computeQpResidual()
 Real ConservativeTemperatureAdvection::computeQpJacobian()
 {
   return _rho[_qp] * _cp[_qp] * ConservativeAdvection::computeQpJacobian() +
-         _d_rho_d_u[_qp] * _cp[_qp] * ConservativeAdvection::computeQpResidual() +
-         _rho[_qp] * _d_cp_d_u[_qp] * ConservativeAdvection::computeQpResidual();
+         _d_rho_d_u[_qp] * _phi[_j][_qp] * _cp[_qp] * ConservativeAdvection::computeQpResidual() +
+         _rho[_qp] * _d_cp_d_u[_qp] * _phi[_j][_qp] * ConservativeAdvection::computeQpResidual();
 }

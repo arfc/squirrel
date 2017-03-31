@@ -33,6 +33,6 @@ Real
 MatINSTemperatureTimeDerivative::computeQpJacobian()
 {
   return _rho[_qp] * _cp[_qp] * TimeDerivative::computeQpJacobian() +
-         _d_rho_d_u[_qp] * _cp[_qp] * TimeDerivative::computeQpResidual() +
-         _rho[_qp] * _d_cp_d_u[_qp] * TimeDerivative::computeQpResidual();
+         _d_rho_d_u[_qp] * _phi[_j][_qp] * _cp[_qp] * TimeDerivative::computeQpResidual() +
+         _rho[_qp] * _d_cp_d_u[_qp] * _phi[_j][_qp] * TimeDerivative::computeQpResidual();
 }

@@ -33,6 +33,6 @@ Real
 TemperatureOutflowBC::computeQpJacobian()
 {
   return _rho[_qp] * _cp[_qp] * OutflowBC::computeQpJacobian() +
-         _d_rho_d_u[_qp] * _cp[_qp] * OutflowBC::computeQpResidual() +
-         _rho[_qp] * _d_cp_d_u[_qp] * OutflowBC::computeQpResidual();
+         _d_rho_d_u[_qp] * _phi[_j][_qp] * _cp[_qp] * OutflowBC::computeQpResidual() +
+         _rho[_qp] * _d_cp_d_u[_qp] * _phi[_j][_qp] * OutflowBC::computeQpResidual();
 }
