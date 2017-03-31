@@ -6,7 +6,6 @@
 
 // kernels
 #include "ConservativeTemperatureAdvection.h"
-#include "MatDiffusion.h"
 #include "NonConservativeAdvection.h"
 #include "PotentialAdvection.h"
 #include "MatINSTemperatureTimeDerivative.h"
@@ -74,7 +73,6 @@ SquirrelApp::registerObjects(Factory & factory)
   registerKernel(PotentialAdvection);
   registerKernel(NonConservativeAdvection);
   registerKernel(ConservativeTemperatureAdvection);
-  registerKernel(MatDiffusion);
   registerKernel(MatINSTemperatureTimeDerivative);
   registerDGKernel(DGTemperatureAdvection);
   registerAuxKernel(Density);
