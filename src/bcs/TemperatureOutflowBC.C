@@ -4,15 +4,23 @@ template<>
 InputParameters validParams<TemperatureOutflowBC>()
 {
   InputParameters params = validParams<OutflowBC>();
-  params.addClassDescription("DG upwinding for the convection");
   return params;
 }
 
 TemperatureOutflowBC::TemperatureOutflowBC(const InputParameters & parameters) :
-    OutflowBC(parameters),
+    DerivativeMaterialInterface<JvarMapIntegratedBCInterface<OutflowBC> >(parameters),
     _rho(getMaterialProperty<Real>("rho")),
-    _cp(getMaterialProperty<Real>("cp"))
+    _d_rho_d_u(getMaterialPropertyDerivative<Real>("rho", _var.name())),
+    _cp(getMaterialProperty<Real>("cp")),
+    _d_cp_d_u(getMaterialPropertyDerivative<Real>("cp", _var.name()))
 {
+}
+
+void
+TemperatureOutflowBC::initialSetup()
+{
+  validateNonlinearCoupling<Real>("rho");
+  validateNonlinearCoupling<Real>("cp");
 }
 
 Real
@@ -24,5 +32,7 @@ TemperatureOutflowBC::computeQpResidual()
 Real
 TemperatureOutflowBC::computeQpJacobian()
 {
-  return _rho[_qp] * _cp[_qp] * OutflowBC::computeQpJacobian();
+  return _rho[_qp] * _cp[_qp] * OutflowBC::computeQpJacobian() +
+         _d_rho_d_u[_qp] * _cp[_qp] * OutflowBC::computeQpResidual() +
+         _rho[_qp] * _d_cp_d_u[_qp] * OutflowBC::computeQpResidual();
 }

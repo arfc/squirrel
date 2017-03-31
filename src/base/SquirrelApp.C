@@ -9,6 +9,7 @@
 #include "MatDiffusion.h"
 #include "NonConservativeAdvection.h"
 #include "PotentialAdvection.h"
+#include "MatINSTemperatureTimeDerivative.h"
 
 // dgkernels
 #include "DGTemperatureAdvection.h"
@@ -23,6 +24,7 @@
 #include "TemperatureInflowBC.h"
 #include "RobinBC.h"
 #include "ExampleShapeSideIntegratedBC.h"
+#include "MatINSTemperatureNoBCBC.h"
 
 // user objects
 #include "NumShapeSideUserObject.h"
@@ -73,6 +75,7 @@ SquirrelApp::registerObjects(Factory & factory)
   registerKernel(NonConservativeAdvection);
   registerKernel(ConservativeTemperatureAdvection);
   registerKernel(MatDiffusion);
+  registerKernel(MatINSTemperatureTimeDerivative);
   registerDGKernel(DGTemperatureAdvection);
   registerAuxKernel(Density);
   registerBoundaryCondition(ExampleShapeSideIntegratedBC);
@@ -81,6 +84,7 @@ SquirrelApp::registerObjects(Factory & factory)
   registerBoundaryCondition(TemperatureOutflowBC);
   registerBoundaryCondition(InflowBC);
   registerBoundaryCondition(TemperatureInflowBC);
+  registerKernel(MatINSTemperatureNoBCBC);
   registerUserObject(NumShapeSideUserObject);
   registerUserObject(DenomShapeSideUserObject);
 }
