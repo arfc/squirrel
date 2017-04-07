@@ -15,6 +15,7 @@
 
 // aux kernels
 #include "Density.h"
+#include "FunctionDerivativeAux.h"
 
 // boundary conditions
 #include "OutflowBC.h"
@@ -76,6 +77,7 @@ SquirrelApp::registerObjects(Factory & factory)
   registerKernel(MatINSTemperatureTimeDerivative);
   registerDGKernel(DGTemperatureAdvection);
   registerAuxKernel(Density);
+  registerAuxKernel(FunctionDerivativeAux);
   registerBoundaryCondition(ExampleShapeSideIntegratedBC);
   registerBoundaryCondition(RobinBC);
   registerBoundaryCondition(OutflowBC);
