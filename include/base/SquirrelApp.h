@@ -5,7 +5,7 @@
 
 class SquirrelApp;
 
-template<>
+template <>
 InputParameters validParams<SquirrelApp>();
 
 class SquirrelApp : public MooseApp

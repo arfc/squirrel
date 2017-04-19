@@ -5,7 +5,7 @@
 
 class OutflowBC;
 
-template<>
+template <>
 InputParameters validParams<OutflowBC>();
 
 class OutflowBC : public IntegratedBC
@@ -20,4 +20,4 @@ protected:
   RealVectorValue _velocity;
 };
 
-#endif //OUTFLOWBC_H
+#endif // OUTFLOWBC_H

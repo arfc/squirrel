@@ -14,18 +14,19 @@
 
 #include "RobinBC.h"
 
-template<>
-InputParameters validParams<RobinBC>()
+template <>
+InputParameters
+validParams<RobinBC>()
 {
   InputParameters params = validParams<IntegratedBC>();
   params.addParam<Real>("velocity", 1, "The 1D velocity.");
   return params;
 }
 
-RobinBC::RobinBC(const InputParameters & parameters) :
-    IntegratedBC(parameters),
-    _velocity(getParam<Real>("velocity"))
-{}
+RobinBC::RobinBC(const InputParameters & parameters)
+  : IntegratedBC(parameters), _velocity(getParam<Real>("velocity"))
+{
+}
 
 Real
 RobinBC::computeQpResidual()

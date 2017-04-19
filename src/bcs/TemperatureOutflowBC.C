@@ -1,14 +1,15 @@
 #include "TemperatureOutflowBC.h"
 
-template<>
-InputParameters validParams<TemperatureOutflowBC>()
+template <>
+InputParameters
+validParams<TemperatureOutflowBC>()
 {
   InputParameters params = validParams<OutflowBC>();
   return params;
 }
 
-TemperatureOutflowBC::TemperatureOutflowBC(const InputParameters & parameters) :
-    DerivativeMaterialInterface<JvarMapIntegratedBCInterface<OutflowBC> >(parameters),
+TemperatureOutflowBC::TemperatureOutflowBC(const InputParameters & parameters)
+  : DerivativeMaterialInterface<JvarMapIntegratedBCInterface<OutflowBC>>(parameters),
     _rho(getMaterialProperty<Real>("rho")),
     _d_rho_d_u(getMaterialPropertyDerivative<Real>("rho", _var.name())),
     _cp(getMaterialProperty<Real>("cp")),

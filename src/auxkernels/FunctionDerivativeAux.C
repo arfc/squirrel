@@ -7,7 +7,9 @@ validParams<FunctionDerivativeAux>()
 {
   InputParameters params = validParams<AuxKernel>();
   params.addRequiredParam<FunctionName>("function", "The function to use as the value");
-  params.addRequiredParam<unsigned int>("component", "What component to take the derivative with respect to. Should be either 1, 2, or 3.");
+  params.addRequiredParam<unsigned int>(
+      "component",
+      "What component to take the derivative with respect to. Should be either 1, 2, or 3.");
   return params;
 }
 

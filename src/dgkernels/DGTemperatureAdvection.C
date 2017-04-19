@@ -1,7 +1,8 @@
 #include "DGTemperatureAdvection.h"
 
-template<>
-InputParameters validParams<DGTemperatureAdvection>()
+template <>
+InputParameters
+validParams<DGTemperatureAdvection>()
 {
   InputParameters params = validParams<DGKernel>();
   params.addRequiredParam<RealVectorValue>("velocity", "Velocity vector");
@@ -9,8 +10,8 @@ InputParameters validParams<DGTemperatureAdvection>()
   return params;
 }
 
-DGTemperatureAdvection::DGTemperatureAdvection(const InputParameters & parameters) :
-    DGKernel(parameters),
+DGTemperatureAdvection::DGTemperatureAdvection(const InputParameters & parameters)
+  : DGKernel(parameters),
     _velocity(getParam<RealVectorValue>("velocity")),
     _rho(getMaterialProperty<Real>("rho")),
     _cp(getMaterialProperty<Real>("cp"))

@@ -30,8 +30,9 @@
 #include "NumShapeSideUserObject.h"
 #include "DenomShapeSideUserObject.h"
 
-template<>
-InputParameters validParams<SquirrelApp>()
+template <>
+InputParameters
+validParams<SquirrelApp>()
 {
   InputParameters params = validParams<MooseApp>();
 
@@ -42,8 +43,7 @@ InputParameters validParams<SquirrelApp>()
   return params;
 }
 
-SquirrelApp::SquirrelApp(InputParameters parameters) :
-    MooseApp(parameters)
+SquirrelApp::SquirrelApp(InputParameters parameters) : MooseApp(parameters)
 {
   Moose::registerObjects(_factory);
   ModulesApp::registerObjects(_factory);
@@ -54,12 +54,14 @@ SquirrelApp::SquirrelApp(InputParameters parameters) :
   SquirrelApp::associateSyntax(_syntax, _action_factory);
 }
 
-SquirrelApp::~SquirrelApp()
-{
-}
+SquirrelApp::~SquirrelApp() {}
 
 // External entry point for dynamic application loading
-extern "C" void SquirrelApp__registerApps() { SquirrelApp::registerApps(); }
+extern "C" void
+SquirrelApp__registerApps()
+{
+  SquirrelApp::registerApps();
+}
 void
 SquirrelApp::registerApps()
 {
@@ -67,7 +69,11 @@ SquirrelApp::registerApps()
 }
 
 // External entry point for dynamic object registration
-extern "C" void SquirrelApp__registerObjects(Factory & factory) { SquirrelApp::registerObjects(factory); }
+extern "C" void
+SquirrelApp__registerObjects(Factory & factory)
+{
+  SquirrelApp::registerObjects(factory);
+}
 void
 SquirrelApp::registerObjects(Factory & factory)
 {
@@ -90,7 +96,11 @@ SquirrelApp::registerObjects(Factory & factory)
 }
 
 // External entry point for dynamic syntax association
-extern "C" void SquirrelApp__associateSyntax(Syntax & syntax, ActionFactory & action_factory) { SquirrelApp::associateSyntax(syntax, action_factory); }
+extern "C" void
+SquirrelApp__associateSyntax(Syntax & syntax, ActionFactory & action_factory)
+{
+  SquirrelApp::associateSyntax(syntax, action_factory);
+}
 void
 SquirrelApp::associateSyntax(Syntax & /*syntax*/, ActionFactory & /*action_factory*/)
 {

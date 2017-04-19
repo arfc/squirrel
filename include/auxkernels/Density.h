@@ -5,7 +5,7 @@
 
 class Density;
 
-template<>
+template <>
 InputParameters validParams<Density>();
 
 class Density : public AuxKernel
@@ -16,10 +16,9 @@ public:
   virtual ~Density() {}
 
 protected:
-
   virtual Real computeValue();
 
   const VariableValue & _density_log;
 };
 
-#endif //DENSITY_H
+#endif // DENSITY_H

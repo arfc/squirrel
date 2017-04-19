@@ -7,16 +7,16 @@
 
 class TemperatureOutflowBC;
 
-template<>
+template <>
 InputParameters validParams<TemperatureOutflowBC>();
 
-class TemperatureOutflowBC : public DerivativeMaterialInterface<JvarMapIntegratedBCInterface<OutflowBC> >
+class TemperatureOutflowBC
+    : public DerivativeMaterialInterface<JvarMapIntegratedBCInterface<OutflowBC>>
 {
 public:
   TemperatureOutflowBC(const InputParameters & parameters);
 
 protected:
-
   virtual void initialSetup() override;
   virtual Real computeQpResidual() override;
   virtual Real computeQpJacobian() override;
@@ -27,4 +27,4 @@ protected:
   const MaterialProperty<Real> & _d_cp_d_u;
 };
 
-#endif //TEMPERATUREOUTFLOWBC_H
+#endif // TEMPERATUREOUTFLOWBC_H

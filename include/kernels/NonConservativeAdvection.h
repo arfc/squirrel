@@ -6,8 +6,7 @@
 // Forward Declaration
 class NonConservativeAdvection;
 
-
-template<>
+template <>
 InputParameters validParams<NonConservativeAdvection>();
 
 class NonConservativeAdvection : public Kernel

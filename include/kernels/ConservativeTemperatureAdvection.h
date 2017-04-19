@@ -8,11 +8,11 @@
 // Forward Declaration
 class ConservativeTemperatureAdvection;
 
-
-template<>
+template <>
 InputParameters validParams<ConservativeTemperatureAdvection>();
 
-class ConservativeTemperatureAdvection : public DerivativeMaterialInterface<JvarMapKernelInterface<ConservativeAdvection> >
+class ConservativeTemperatureAdvection
+    : public DerivativeMaterialInterface<JvarMapKernelInterface<ConservativeAdvection>>
 {
 public:
   ConservativeTemperatureAdvection(const InputParameters & parameters);

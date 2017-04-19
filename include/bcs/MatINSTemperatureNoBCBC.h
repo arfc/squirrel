@@ -6,7 +6,7 @@
 // Forward Declarations
 class MatINSTemperatureNoBCBC;
 
-template<>
+template <>
 InputParameters validParams<MatINSTemperatureNoBCBC>();
 
 /**
@@ -18,7 +18,7 @@ class MatINSTemperatureNoBCBC : public IntegratedBC
 public:
   MatINSTemperatureNoBCBC(const InputParameters & parameters);
 
-  virtual ~MatINSTemperatureNoBCBC(){}
+  virtual ~MatINSTemperatureNoBCBC() {}
 
 protected:
   virtual Real computeQpResidual();
@@ -27,6 +27,5 @@ protected:
 
   const MaterialProperty<Real> & _k;
 };
-
 
 #endif // MATINSTEMPERATURENOBCBC_H

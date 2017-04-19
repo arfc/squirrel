@@ -1,20 +1,21 @@
 #include "MatINSTemperatureTimeDerivative.h"
 
-template<>
-InputParameters validParams<MatINSTemperatureTimeDerivative>()
+template <>
+InputParameters
+validParams<MatINSTemperatureTimeDerivative>()
 {
   InputParameters params = validParams<TimeDerivative>();
   return params;
 }
 
-
-MatINSTemperatureTimeDerivative::MatINSTemperatureTimeDerivative(const InputParameters & parameters) :
-    DerivativeMaterialInterface<JvarMapKernelInterface<TimeDerivative> >(parameters),
+MatINSTemperatureTimeDerivative::MatINSTemperatureTimeDerivative(const InputParameters & parameters)
+  : DerivativeMaterialInterface<JvarMapKernelInterface<TimeDerivative>>(parameters),
     _rho(getMaterialProperty<Real>("rho")),
     _d_rho_d_u(getMaterialPropertyDerivative<Real>("rho", _var.name())),
     _cp(getMaterialProperty<Real>("cp")),
     _d_cp_d_u(getMaterialPropertyDerivative<Real>("cp", _var.name()))
-{}
+{
+}
 
 void
 MatINSTemperatureTimeDerivative::initialSetup()

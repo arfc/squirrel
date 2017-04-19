@@ -1,14 +1,15 @@
 #include "TemperatureInflowBC.h"
 
-template<>
-InputParameters validParams<TemperatureInflowBC>()
+template <>
+InputParameters
+validParams<TemperatureInflowBC>()
 {
   InputParameters params = validParams<InflowBC>();
   return params;
 }
 
-TemperatureInflowBC::TemperatureInflowBC(const InputParameters & parameters) :
-    DerivativeMaterialInterface<JvarMapIntegratedBCInterface<InflowBC> >(parameters),
+TemperatureInflowBC::TemperatureInflowBC(const InputParameters & parameters)
+  : DerivativeMaterialInterface<JvarMapIntegratedBCInterface<InflowBC>>(parameters),
     _rho(getMaterialProperty<Real>("rho")),
     _d_rho_d_u(getMaterialPropertyDerivative<Real>("rho", _var.name())),
     _cp(getMaterialProperty<Real>("cp")),

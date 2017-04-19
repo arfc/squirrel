@@ -5,7 +5,7 @@
 
 class DGTemperatureAdvection;
 
-template<>
+template <>
 InputParameters validParams<DGTemperatureAdvection>();
 
 class DGTemperatureAdvection : public DGKernel
@@ -22,4 +22,4 @@ protected:
   const MaterialProperty<Real> & _cp;
 };
 
-#endif //DGTEMPERATUREADVECTION_H
+#endif // DGTEMPERATUREADVECTION_H
