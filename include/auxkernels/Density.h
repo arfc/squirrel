@@ -16,7 +16,7 @@ public:
   virtual ~Density() {}
 
 protected:
-  virtual Real computeValue();
+  virtual Real computeValue() override;
 
   const VariableValue & _density_log;
 };
