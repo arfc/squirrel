@@ -14,7 +14,7 @@
 *.aux
 *.toc
 *.snm
-*.csv
+*.csv*
 *.dylib
 *.so
 *.gitignore*

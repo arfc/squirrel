@@ -9,15 +9,19 @@
 #include "NonConservativeAdvection.h"
 #include "PotentialAdvection.h"
 #include "MatINSTemperatureTimeDerivative.h"
+#include "VelocityFunctionTemperatureAdvection.h"
 
 // dgkernels
 #include "DGTemperatureAdvection.h"
+#include "DGFunctionConvection.h"
 
 // aux kernels
 #include "Density.h"
 #include "FunctionDerivativeAux.h"
 
 // boundary conditions
+#include "VelocityFunctionTemperatureOutflowBC.h"
+#include "VelocityFunctionOutflowBC.h"
 #include "OutflowBC.h"
 #include "TemperatureOutflowBC.h"
 #include "InflowBC.h"
@@ -25,10 +29,14 @@
 #include "RobinBC.h"
 #include "ExampleShapeSideIntegratedBC.h"
 #include "MatINSTemperatureNoBCBC.h"
+#include "ChannelGradientBC.h"
 
 // user objects
 #include "NumShapeSideUserObject.h"
 #include "DenomShapeSideUserObject.h"
+
+// postprocessors
+#include "ChannelGradient.h"
 
 template <>
 InputParameters
@@ -81,18 +89,24 @@ SquirrelApp::registerObjects(Factory & factory)
   registerKernel(NonConservativeAdvection);
   registerKernel(ConservativeTemperatureAdvection);
   registerKernel(MatINSTemperatureTimeDerivative);
+  registerKernel(VelocityFunctionTemperatureAdvection);
   registerDGKernel(DGTemperatureAdvection);
+  registerDGKernel(DGFunctionConvection);
   registerAuxKernel(Density);
   registerAuxKernel(FunctionDerivativeAux);
   registerBoundaryCondition(ExampleShapeSideIntegratedBC);
+  registerBoundaryCondition(ChannelGradientBC);
   registerBoundaryCondition(RobinBC);
   registerBoundaryCondition(OutflowBC);
   registerBoundaryCondition(TemperatureOutflowBC);
+  registerBoundaryCondition(VelocityFunctionOutflowBC);
+  registerBoundaryCondition(VelocityFunctionTemperatureOutflowBC);
   registerBoundaryCondition(InflowBC);
   registerBoundaryCondition(TemperatureInflowBC);
   registerKernel(MatINSTemperatureNoBCBC);
   registerUserObject(NumShapeSideUserObject);
   registerUserObject(DenomShapeSideUserObject);
+  registerVectorPostprocessor(ChannelGradient);
 }
 
 // External entry point for dynamic syntax association
