@@ -25,6 +25,8 @@
 #include "RobinBC.h"
 #include "ExampleShapeSideIntegratedBC.h"
 #include "MatINSTemperatureNoBCBC.h"
+#include "PostprocessorInflowBC.h"
+#include "PostprocessorTempInflowBC.h"
 
 // user objects
 #include "NumShapeSideUserObject.h"
@@ -90,6 +92,8 @@ SquirrelApp::registerObjects(Factory & factory)
   registerBoundaryCondition(TemperatureOutflowBC);
   registerBoundaryCondition(InflowBC);
   registerBoundaryCondition(TemperatureInflowBC);
+  registerBoundaryCondition(PostprocessorInflowBC);
+  registerBoundaryCondition(PostprocessorTempInflowBC);
   registerKernel(MatINSTemperatureNoBCBC);
   registerUserObject(NumShapeSideUserObject);
   registerUserObject(DenomShapeSideUserObject);
