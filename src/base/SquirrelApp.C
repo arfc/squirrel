@@ -38,6 +38,7 @@
 
 // postprocessors
 #include "ChannelGradient.h"
+#include "FlexiblePostprocessorDirichletBC.h"
 
 template <>
 InputParameters
@@ -108,6 +109,7 @@ SquirrelApp::registerObjects(Factory & factory)
   registerKernel(MatINSTemperatureNoBCBC);
   registerUserObject(NumShapeSideUserObject);
   registerUserObject(DenomShapeSideUserObject);
+  registerPostprocessor(FlexiblePostprocessorDirichletBC);
   registerVectorPostprocessor(ChannelGradient);
 }
 
