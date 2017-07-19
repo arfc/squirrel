@@ -26,6 +26,8 @@
 #include "TemperatureOutflowBC.h"
 #include "InflowBC.h"
 #include "TemperatureInflowBC.h"
+#include "PostprocessorInflowBC.h"
+#include "PostprocessorTemperatureInflowBC.h"
 #include "RobinBC.h"
 #include "ExampleShapeSideIntegratedBC.h"
 #include "MatINSTemperatureNoBCBC.h"
@@ -106,6 +108,8 @@ SquirrelApp::registerObjects(Factory & factory)
   registerBoundaryCondition(VelocityFunctionTemperatureOutflowBC);
   registerBoundaryCondition(InflowBC);
   registerBoundaryCondition(TemperatureInflowBC);
+  registerBoundaryCondition(PostprocessorInflowBC);
+  registerBoundaryCondition(PostprocessorTemperatureInflowBC);
   registerKernel(MatINSTemperatureNoBCBC);
   registerUserObject(NumShapeSideUserObject);
   registerUserObject(DenomShapeSideUserObject);
