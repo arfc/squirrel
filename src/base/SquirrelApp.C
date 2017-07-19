@@ -10,6 +10,8 @@
 #include "PotentialAdvection.h"
 #include "MatINSTemperatureTimeDerivative.h"
 #include "VelocityFunctionTemperatureAdvection.h"
+#include "CtrlConservativeAdvection.h"
+#include "CtrlConservativeTemperatureAdvection.h"
 
 // dgkernels
 #include "DGTemperatureAdvection.h"
@@ -92,6 +94,8 @@ SquirrelApp::registerObjects(Factory & factory)
   registerKernel(ConservativeTemperatureAdvection);
   registerKernel(MatINSTemperatureTimeDerivative);
   registerKernel(VelocityFunctionTemperatureAdvection);
+  registerKernel(CtrlConservativeAdvection);
+  registerKernel(CtrlConservativeTemperatureAdvection);
   registerDGKernel(DGTemperatureAdvection);
   registerDGKernel(DGFunctionConvection);
   registerAuxKernel(Density);
