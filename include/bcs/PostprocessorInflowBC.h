@@ -17,7 +17,9 @@ protected:
   const Real & _uu;
   const Real & _vv;
   const Real & _ww;
-  const PostprocessorValue & _inlet_conc;
+  const PostprocessorValue & _pp_value;
+  const Real & _scale;
+  const Real & _offset;
   virtual Real computeQpResidual();
   virtual Real computeQpJacobian();
 };

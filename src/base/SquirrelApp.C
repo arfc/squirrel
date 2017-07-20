@@ -35,6 +35,7 @@
 #include "MatINSTemperatureNoBCBC.h"
 #include "ChannelGradientBC.h"
 #include "DiffusiveFluxBC.h"
+#include "DGDiffusionPostprocessorDirichletBC.h"
 
 // user objects
 #include "NumShapeSideUserObject.h"
@@ -102,6 +103,7 @@ SquirrelApp::registerObjects(Factory & factory)
   registerDGKernel(DGFunctionConvection);
   registerAuxKernel(Density);
   registerAuxKernel(FunctionDerivativeAux);
+  registerBoundaryCondition(DGDiffusionPostprocessorDirichletBC);
   registerBoundaryCondition(DiffusiveFluxBC);
   registerBoundaryCondition(ExampleShapeSideIntegratedBC);
   registerBoundaryCondition(ChannelGradientBC);
