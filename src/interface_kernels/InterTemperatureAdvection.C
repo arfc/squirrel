@@ -5,15 +5,23 @@ InputParameters
 validParams<InterTemperatureAdvection>()
 {
   InputParameters params = validParams<InterfaceKernel>();
-  params.addRequiredParam<RealVectorValue>("velocity", "Velocity vector");
   params.addClassDescription("DG upwinding for the convection");
   params.addParam<Real>("heat_source", "Should have units of power/length^2");
+  params.addParam<Real>("u_val", 0, "x velocity cm/s");
+  params.addParam<Real>("v_val", 0, "y velocity cm/s");
+  params.addParam<Real>("w_val", 0, "z velocity cm/s");
+  params.declareControllable("u_val");
+  params.declareControllable("v_val");
+  params.declareControllable("w_val");
+  params.declareControllable("heat_source");
   return params;
 }
 
 InterTemperatureAdvection::InterTemperatureAdvection(const InputParameters & parameters)
   : InterfaceKernel(parameters),
-    _velocity(getParam<RealVectorValue>("velocity")),
+    _uu(getParam<Real>("u_val")),
+    _vv(getParam<Real>("v_val")),
+    _ww(getParam<Real>("w_val")),
     _rho(getMaterialProperty<Real>("rho")),
     _cp(getMaterialProperty<Real>("cp")),
     _heat_source(getParam<Real>("heat_source"))
@@ -24,8 +32,8 @@ Real
 InterTemperatureAdvection::computeQpResidual(Moose::DGResidualType type)
 {
   Real r = 0;
-
-  Real vdotn = _rho[_qp] * _cp[_qp] * _velocity * _normals[_qp];
+  RealVectorValue velocity(_uu,_vv,_ww);
+  Real vdotn = _rho[_qp] * _cp[_qp] * velocity * _normals[_qp];
 
   switch (type)
   {
@@ -52,7 +60,8 @@ InterTemperatureAdvection::computeQpJacobian(Moose::DGJacobianType type)
 {
   Real r = 0;
 
-  Real vdotn = _rho[_qp] * _cp[_qp] * _velocity * _normals[_qp];
+  RealVectorValue velocity(_uu,_vv,_ww);
+  Real vdotn = _rho[_qp] * _cp[_qp] * velocity * _normals[_qp];
 
   switch (type)
   {

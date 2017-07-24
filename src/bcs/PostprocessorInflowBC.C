@@ -8,6 +8,9 @@ validParams<PostprocessorInflowBC>()
   params.addParam<Real>("uu", 0, "The x-component of the velocity");
   params.addParam<Real>("vv", 0, "The y-component of the velocity");
   params.addParam<Real>("ww", 0, "The z-component of the velocity");
+  params.declareControllable("uu");
+  params.declareControllable("vv");
+  params.declareControllable("ww");
   params.addRequiredParam<PostprocessorName>(
       "postprocessor", "The postprocessor from which to derive the inlet concentration.");
   params.addParam<Real>("scale", 1, "The amount to scale the postprocessor value by");

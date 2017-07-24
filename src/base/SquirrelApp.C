@@ -16,6 +16,7 @@
 // dgkernels
 #include "DGTemperatureAdvection.h"
 #include "DGFunctionConvection.h"
+#include "DGFunctionTemperatureAdvection.h"
 
 // interface_kernels
 #include "InterTemperatureAdvection.h"
@@ -104,6 +105,7 @@ SquirrelApp::registerObjects(Factory & factory)
   registerKernel(CtrlConservativeTemperatureAdvection);
   registerDGKernel(DGTemperatureAdvection);
   registerDGKernel(DGFunctionConvection);
+  registerDGKernel(DGFunctionTemperatureAdvection);
   registerInterfaceKernel(InterTemperatureAdvection);
   registerAuxKernel(Density);
   registerAuxKernel(FunctionDerivativeAux);
