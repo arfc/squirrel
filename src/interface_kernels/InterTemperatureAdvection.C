@@ -32,7 +32,7 @@ Real
 InterTemperatureAdvection::computeQpResidual(Moose::DGResidualType type)
 {
   Real r = 0;
-  RealVectorValue velocity(_uu,_vv,_ww);
+  RealVectorValue velocity(_uu, _vv, _ww);
   Real vdotn = _rho[_qp] * _cp[_qp] * velocity * _normals[_qp];
 
   switch (type)
@@ -60,7 +60,7 @@ InterTemperatureAdvection::computeQpJacobian(Moose::DGJacobianType type)
 {
   Real r = 0;
 
-  RealVectorValue velocity(_uu,_vv,_ww);
+  RealVectorValue velocity(_uu, _vv, _ww);
   Real vdotn = _rho[_qp] * _cp[_qp] * velocity * _normals[_qp];
 
   switch (type)
