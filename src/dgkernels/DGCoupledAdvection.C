@@ -5,9 +5,9 @@ InputParameters
 validParams<DGCoupledAdvection>()
 {
   InputParameters params = validParams<DGKernel>();
-  params.addRequiredCoupledVar("u", "x direction velocity");
-  params.addCoupledVar("v", 0, "y direction velocity");
-  params.addCoupledVar("w", 0, "z direction velocity");
+  params.addRequiredCoupledVar("uvel", "x direction velocity");
+  params.addCoupledVar("vvel", 0, "y direction velocity");
+  params.addCoupledVar("wvel", 0, "z direction velocity");
   params.addClassDescription("DG upwinding for convection on Navier-Stokes velocity variables");
   return params;
 }
@@ -15,18 +15,17 @@ validParams<DGCoupledAdvection>()
 DGCoupledAdvection::DGCoupledAdvection(const InputParameters & parameters)
   : DGKernel(parameters),
     // velocity variables
-    _vel_x(coupledValue("u")),
-    _vel_y(coupledValue("v")),
-    _vel_z(coupledValue("w")),
+    _vel_x(coupledValue("uvel")),
+    _vel_y(coupledValue("vvel")),
+    _vel_z(coupledValue("wvel")),
     // gradients for the jacobian
-    _grad_x_vel(coupledGradient("u")),
-    _grad_y_vel(coupledGradient("v")),
-    _grad_z_vel(coupledGradient("w")),
+    _grad_x_vel(coupledGradient("uvel")),
+    _grad_y_vel(coupledGradient("vvel")),
+    _grad_z_vel(coupledGradient("wvel")),
     // variable enumeration
-    _u_vel_var_number(coupled("u")),
-    _v_vel_var_number(coupled("v")),
-    _w_vel_var_number(coupled("w")),
-
+    _x_vel_var_number(coupled("uvel")),
+    _y_vel_var_number(coupled("vvel")),
+    _z_vel_var_number(coupled("wvel"))
 {
 }
 
@@ -35,9 +34,9 @@ DGCoupledAdvection::computeQpResidual(Moose::DGResidualType type)
 {
   Real r = 0;
 
-  Real vdotn = _vel_x * _normals[_qp](0)+
-               _vel_y * _normals[_qp](1)+
-			   _vel_z * _normals[_qp](2);
+  Real vdotn = _vel_x[_qp] * _normals[_qp](0)+
+               _vel_y[_qp]* _normals[_qp](1)+
+			   _vel_z[_qp] * _normals[_qp](2);
   switch (type)
   {
     case Moose::Element:
@@ -63,9 +62,9 @@ DGCoupledAdvection::computeQpJacobian(Moose::DGJacobianType type)
 {
   Real r = 0;
 
-  Real vdotn = _vel_x * _normals[_qp](0) +
-               _vel_y * _normals[_qp](1) +
-			   _vel_z * _normals[_qp](2);
+  Real vdotn = _vel_x[_qp] * _normals[_qp](0) +
+               _vel_y[_qp] * _normals[_qp](1) +
+			   _vel_z[_qp] * _normals[_qp](2);
 
   switch (type)
   {
