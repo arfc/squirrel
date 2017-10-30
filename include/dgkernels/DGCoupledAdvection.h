@@ -14,8 +14,10 @@ public:
   DGCoupledAdvection(const InputParameters & parameters);
 
 protected:
-  virtual Real computeQpResidual(Moose::DGResidualType type);
-  virtual Real computeQpJacobian(Moose::DGJacobianType type);
+  virtual Real computeQpResidual(Moose::DGResidualType type) override;
+  virtual Real computeQpJacobian(Moose::DGJacobianType type) override;
+  virtual Real computeQpOffDiagJacobian(Moose::DGJacobianType type, unsigned jvar) override;
+  virtual Real computeOffDiagJacobianHelper(Moose::DGJacobianType type, const Real & normal_comp);
 
 private:
   const VariableValue & _vel_x;

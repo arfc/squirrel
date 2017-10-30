@@ -34,9 +34,8 @@ DGCoupledAdvection::computeQpResidual(Moose::DGResidualType type)
 {
   Real r = 0;
 
-  Real vdotn = _vel_x[_qp] * _normals[_qp](0)+
-               _vel_y[_qp]* _normals[_qp](1)+
-			   _vel_z[_qp] * _normals[_qp](2);
+  Real vdotn = _vel_x[_qp] * _normals[_qp](0) + _vel_y[_qp] * _normals[_qp](1) +
+               _vel_z[_qp] * _normals[_qp](2);
   switch (type)
   {
     case Moose::Element:
@@ -62,9 +61,8 @@ DGCoupledAdvection::computeQpJacobian(Moose::DGJacobianType type)
 {
   Real r = 0;
 
-  Real vdotn = _vel_x[_qp] * _normals[_qp](0) +
-               _vel_y[_qp] * _normals[_qp](1) +
-			   _vel_z[_qp] * _normals[_qp](2);
+  Real vdotn = _vel_x[_qp] * _normals[_qp](0) + _vel_y[_qp] * _normals[_qp](1) +
+               _vel_z[_qp] * _normals[_qp](2);
 
   switch (type)
   {
@@ -88,6 +86,63 @@ DGCoupledAdvection::computeQpJacobian(Moose::DGJacobianType type)
         r -= vdotn * _phi_neighbor[_j][_qp] * _test_neighbor[_i][_qp];
       break;
   }
+
+  return r;
+}
+
+Real
+DGCoupledAdvection::computeOffDiagJacobianHelper(Moose::DGJacobianType type,
+                                                 const Real & normal_comp)
+{
+  Real r = 0;
+  Real vdotn = _vel_x[_qp] * _normals[_qp](0) + _vel_y[_qp] * _normals[_qp](1) +
+               _vel_z[_qp] * _normals[_qp](2);
+
+  switch (type)
+  {
+    case Moose::ElementElement:
+      if (vdotn >= 0)
+        r += _phi[_j][_qp] * normal_comp * _u[_qp] * _test[_i][_qp];
+      else
+        r += _phi[_j][_qp] * normal_comp * _u_neighbor[_qp] * _test[_i][_qp];
+      break;
+
+    case Moose::NeighborElement:
+      if (vdotn >= 0)
+        r -= _phi[_j][_qp] * normal_comp * _u[_qp] * _test_neighbor[_i][_qp];
+      else
+        r -= _phi[_j][_qp] * normal_comp * _u_neighbor[_qp] * _test_neighbor[_i][_qp];
+      break;
+
+    case Moose::ElementNeighbor:
+      if (vdotn >= 0)
+        r += _phi_neighbor[_j][_qp] * normal_comp * _u[_qp] * _test[_i][_qp];
+      else
+        r += _phi_neighbor[_j][_qp] * normal_comp * _u_neighbor[_qp] * _test[_i][_qp];
+      break;
+
+    case Moose::NeighborNeighbor:
+      if (vdotn >= 0)
+        r -= _phi_neighbor[_j][_qp] * normal_comp * _u[_qp] * _test_neighbor[_i][_qp];
+      else
+        r -= _phi_neighbor[_j][_qp] * normal_comp * _u_neighbor[_qp] * _test_neighbor[_i][_qp];
+      break;
+  }
+
+  return r;
+}
+
+Real
+DGCoupledAdvection::computeQpOffDiagJacobian(Moose::DGJacobianType type, unsigned jvar)
+{
+  Real r = 0;
+
+  if (jvar == _x_vel_var_number)
+    r += computeOffDiagJacobianHelper(type, _normals[_qp](0));
+  else if (jvar == _y_vel_var_number)
+    r += computeOffDiagJacobianHelper(type, _normals[_qp](1));
+  else if (jvar == _z_vel_var_number)
+    r += computeOffDiagJacobianHelper(type, _normals[_qp](2));
 
   return r;
 }
