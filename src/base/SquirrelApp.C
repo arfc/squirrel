@@ -109,7 +109,7 @@ SquirrelApp::registerObjects(Factory & factory)
   registerDGKernel(DGFunctionTemperatureAdvection);
   registerDGKernel(DGCoupledAdvection);
   registerInterfaceKernel(InterTemperatureAdvection);
-  //registerAuxKernel(Density);
+  registerAuxKernel(Density);
   registerAuxKernel(FunctionDerivativeAux);
   registerBoundaryCondition(DGDiffusionPostprocessorDirichletBC);
   registerBoundaryCondition(DiffusiveFluxBC);
