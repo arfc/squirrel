@@ -4,52 +4,6 @@
 #include "ModulesApp.h"
 #include "MooseSyntax.h"
 
-// kernels
-#include "ConservativeTemperatureAdvection.h"
-#include "NonConservativeAdvection.h"
-#include "PotentialAdvection.h"
-#include "MatINSTemperatureTimeDerivative.h"
-#include "VelocityFunctionTemperatureAdvection.h"
-#include "CtrlConservativeAdvection.h"
-#include "CtrlConservativeTemperatureAdvection.h"
-
-// dgkernels
-#include "DGTemperatureAdvection.h"
-#include "DGFunctionConvection.h"
-#include "DGFunctionTemperatureAdvection.h"
-#include "DGCoupledAdvection.h"
-
-// interface_kernels
-#include "InterTemperatureAdvection.h"
-
-// aux kernels
-#include "Density.h"
-#include "FunctionDerivativeAux.h"
-
-// boundary conditions
-#include "VelocityFunctionTemperatureOutflowBC.h"
-#include "VelocityFunctionOutflowBC.h"
-#include "OutflowBC.h"
-#include "TemperatureOutflowBC.h"
-#include "InflowBC.h"
-#include "TemperatureInflowBC.h"
-#include "PostprocessorInflowBC.h"
-#include "PostprocessorTemperatureInflowBC.h"
-#include "RobinBC.h"
-#include "ExampleShapeSideIntegratedBC.h"
-#include "MatINSTemperatureNoBCBC.h"
-#include "ChannelGradientBC.h"
-#include "DiffusiveFluxBC.h"
-#include "DGDiffusionPostprocessorDirichletBC.h"
-
-// user objects
-#include "NumShapeSideUserObject.h"
-#include "DenomShapeSideUserObject.h"
-
-// postprocessors
-#include "ChannelGradient.h"
-#include "FlexiblePostprocessorDirichletBC.h"
-
 template <>
 InputParameters
 validParams<SquirrelApp>()
@@ -65,79 +19,38 @@ validParams<SquirrelApp>()
 
 SquirrelApp::SquirrelApp(InputParameters parameters) : MooseApp(parameters)
 {
-  Moose::registerObjects(_factory);
-  ModulesApp::registerObjects(_factory);
-  SquirrelApp::registerObjects(_factory);
-
-  Moose::associateSyntax(_syntax, _action_factory);
-  ModulesApp::associateSyntax(_syntax, _action_factory);
-  SquirrelApp::associateSyntax(_syntax, _action_factory);
+  SquirrelApp::registerAll(_factory, _action_factory, _syntax);
 }
 
 SquirrelApp::~SquirrelApp() {}
 
-// External entry point for dynamic application loading
-extern "C" void
-SquirrelApp__registerApps()
+void
+SquirrelApp::registerAll(Factory & f, ActionFactory & af, Syntax & s)
 {
-  SquirrelApp::registerApps();
+  ModulesApp::registerAll(f, af, s);
+  Registry::registerObjectsTo(f, {"SquirrelApp"});
+  Registry::registerActionsTo(af, {"SquirrelApp"});
+
+  /* register custom execute flags, action syntax, etc. here */
 }
+
 void
 SquirrelApp::registerApps()
 {
   registerApp(SquirrelApp);
 }
 
-// External entry point for dynamic object registration
+/***************************************************************************************************
+ *********************** Dynamic Library Entry Points - DO NOT MODIFY ******************************
+ **************************************************************************************************/
 extern "C" void
-SquirrelApp__registerObjects(Factory & factory)
+SquirrelApp__registerAll(Factory & f, ActionFactory & af, Syntax & s)
 {
-  SquirrelApp::registerObjects(factory);
-}
-void
-SquirrelApp::registerObjects(Factory & factory)
-{
-  registerKernel(PotentialAdvection);
-  registerKernel(NonConservativeAdvection);
-  registerKernel(ConservativeTemperatureAdvection);
-  registerKernel(MatINSTemperatureTimeDerivative);
-  registerKernel(VelocityFunctionTemperatureAdvection);
-  registerKernel(CtrlConservativeAdvection);
-  registerKernel(CtrlConservativeTemperatureAdvection);
-  registerDGKernel(DGTemperatureAdvection);
-  registerDGKernel(DGFunctionConvection);
-  registerDGKernel(DGFunctionTemperatureAdvection);
-  registerDGKernel(DGCoupledAdvection);
-  registerInterfaceKernel(InterTemperatureAdvection);
-  registerAuxKernel(Density);
-  registerAuxKernel(FunctionDerivativeAux);
-  registerBoundaryCondition(DGDiffusionPostprocessorDirichletBC);
-  registerBoundaryCondition(DiffusiveFluxBC);
-  registerBoundaryCondition(ExampleShapeSideIntegratedBC);
-  registerBoundaryCondition(ChannelGradientBC);
-  registerBoundaryCondition(RobinBC);
-  registerBoundaryCondition(OutflowBC);
-  registerBoundaryCondition(TemperatureOutflowBC);
-  registerBoundaryCondition(VelocityFunctionOutflowBC);
-  registerBoundaryCondition(VelocityFunctionTemperatureOutflowBC);
-  registerBoundaryCondition(InflowBC);
-  registerBoundaryCondition(TemperatureInflowBC);
-  registerBoundaryCondition(PostprocessorInflowBC);
-  registerBoundaryCondition(PostprocessorTemperatureInflowBC);
-  registerKernel(MatINSTemperatureNoBCBC);
-  registerUserObject(NumShapeSideUserObject);
-  registerUserObject(DenomShapeSideUserObject);
-  registerPostprocessor(FlexiblePostprocessorDirichletBC);
-  registerVectorPostprocessor(ChannelGradient);
+  SquirrelApp::registerAll(f, af, s);
 }
 
-// External entry point for dynamic syntax association
 extern "C" void
-SquirrelApp__associateSyntax(Syntax & syntax, ActionFactory & action_factory)
+SquirrelApp__registerApps()
 {
-  SquirrelApp::associateSyntax(syntax, action_factory);
-}
-void
-SquirrelApp::associateSyntax(Syntax & /*syntax*/, ActionFactory & /*action_factory*/)
-{
+  SquirrelApp::registerApps();
 }
