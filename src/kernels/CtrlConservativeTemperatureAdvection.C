@@ -1,5 +1,7 @@
 #include "CtrlConservativeTemperatureAdvection.h"
 
+registerMooseObject("SquirrelApp", CtrlConservativeTemperatureAdvection);
+
 template <>
 InputParameters
 validParams<CtrlConservativeTemperatureAdvection>()

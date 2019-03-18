@@ -1,5 +1,7 @@
 #include "CtrlConservativeAdvection.h"
 
+registerMooseObject("SquirrelApp", CtrlConservativeAdvection);
+
 template <>
 InputParameters
 validParams<CtrlConservativeAdvection>()

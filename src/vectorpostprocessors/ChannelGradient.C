@@ -1,6 +1,8 @@
 #include "ChannelGradient.h"
 #include "VectorPostprocessorInterface.h"
 
+registerMooseObject("SquirrelApp", ChannelGradient);
+
 template <>
 InputParameters
 validParams<ChannelGradient>()

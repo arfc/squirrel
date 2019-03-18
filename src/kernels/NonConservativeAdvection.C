@@ -1,5 +1,7 @@
 #include "NonConservativeAdvection.h"
 
+registerMooseObject("SquirrelApp", NonConservativeAdvection);
+
 template <>
 InputParameters
 validParams<NonConservativeAdvection>()

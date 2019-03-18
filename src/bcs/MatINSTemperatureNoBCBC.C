@@ -1,5 +1,7 @@
 #include "MatINSTemperatureNoBCBC.h"
 
+registerMooseObject("SquirrelApp", MatINSTemperatureNoBCBC);
+
 template <>
 InputParameters
 validParams<MatINSTemperatureNoBCBC>()

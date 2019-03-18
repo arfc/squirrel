@@ -1,5 +1,7 @@
 #include "InflowBC.h"
 
+registerMooseObject("SquirrelApp", InflowBC);
+
 template <>
 InputParameters
 validParams<InflowBC>()

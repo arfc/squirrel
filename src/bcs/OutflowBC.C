@@ -1,5 +1,7 @@
 #include "OutflowBC.h"
 
+registerMooseObject("SquirrelApp", OutflowBC);
+
 template <>
 InputParameters
 validParams<OutflowBC>()

@@ -1,5 +1,7 @@
 #include "FlexiblePostprocessorDirichletBC.h"
 
+registerMooseObject("SquirrelApp", FlexiblePostprocessorDirichletBC);
+
 template <>
 InputParameters
 validParams<FlexiblePostprocessorDirichletBC>()

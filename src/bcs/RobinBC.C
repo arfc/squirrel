@@ -1,6 +1,8 @@
 
 #include "RobinBC.h"
 
+registerMooseObject("SquirrelApp", RobinBC);
+
 template <>
 InputParameters
 validParams<RobinBC>()
