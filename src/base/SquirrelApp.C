@@ -17,6 +17,10 @@ validParams<SquirrelApp>()
   return params;
 }
 
+// When using the new Registry system, this line is required so that
+// dependent apps know about the SquirrelApp label.
+registerKnownLabel("SquirrelApp");
+
 SquirrelApp::SquirrelApp(InputParameters parameters) : MooseApp(parameters)
 {
   SquirrelApp::registerAll(_factory, _action_factory, _syntax);
