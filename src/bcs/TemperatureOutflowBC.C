@@ -1,5 +1,7 @@
 #include "TemperatureOutflowBC.h"
 
+registerMooseObject("SquirrelApp", TemperatureOutflowBC);
+
 template <>
 InputParameters
 validParams<TemperatureOutflowBC>()

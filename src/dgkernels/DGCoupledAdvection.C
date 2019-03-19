@@ -1,5 +1,7 @@
 #include "DGCoupledAdvection.h"
 
+registerMooseObject("SquirrelApp", DGCoupledAdvection);
+
 template <>
 InputParameters
 validParams<DGCoupledAdvection>()

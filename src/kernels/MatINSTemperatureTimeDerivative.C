@@ -1,5 +1,7 @@
 #include "MatINSTemperatureTimeDerivative.h"
 
+registerMooseObject("SquirrelApp", MatINSTemperatureTimeDerivative);
+
 template <>
 InputParameters
 validParams<MatINSTemperatureTimeDerivative>()

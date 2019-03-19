@@ -1,5 +1,7 @@
 #include "PotentialAdvection.h"
 
+registerMooseObject("SquirrelApp", PotentialAdvection);
+
 template <>
 InputParameters
 validParams<PotentialAdvection>()

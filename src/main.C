@@ -18,13 +18,10 @@ main(int argc, char * argv[])
   SquirrelApp::registerApps();
 
   // This creates dynamic memory that we're responsible for deleting
-  MooseApp * app = AppFactory::createApp("SquirrelApp", argc, argv);
+  std::shared_ptr<MooseApp> app = AppFactory::createAppShared("SquirrelApp", argc, argv);
 
   // Execute the application
   app->run();
-
-  // Free up the memory we created earlier
-  delete app;
 
   return 0;
 }

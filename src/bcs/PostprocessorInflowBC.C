@@ -1,5 +1,7 @@
 #include "PostprocessorInflowBC.h"
 
+registerMooseObject("SquirrelApp", PostprocessorInflowBC);
+
 template <>
 InputParameters
 validParams<PostprocessorInflowBC>()

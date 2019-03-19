@@ -1,5 +1,7 @@
 #include "InterTemperatureAdvection.h"
 
+registerMooseObject("SquirrelApp", InterTemperatureAdvection);
+
 template <>
 InputParameters
 validParams<InterTemperatureAdvection>()
