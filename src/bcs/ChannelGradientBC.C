@@ -1,6 +1,8 @@
 #include "ChannelGradientBC.h"
 #include "MooseVariable.h"
 
+registerMooseObject("SquirrelApp", ChannelGradientBC);
+
 template <>
 InputParameters
 validParams<ChannelGradientBC>()

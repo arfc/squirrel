@@ -1,6 +1,7 @@
-
 #include "NumShapeSideUserObject.h"
 #include "libmesh/quadrature.h"
+
+registerMooseObject("SquirrelApp", NumShapeSideUserObject);
 
 template <>
 InputParameters

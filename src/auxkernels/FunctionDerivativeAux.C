@@ -1,6 +1,8 @@
 #include "FunctionDerivativeAux.h"
 #include "Function.h"
 
+registerMooseObject("SquirrelApp", FunctionDerivativeAux);
+
 template <>
 InputParameters
 validParams<FunctionDerivativeAux>()

@@ -1,5 +1,7 @@
 #include "DGFunctionTemperatureAdvection.h"
 
+registerMooseObject("SquirrelApp", DGFunctionTemperatureAdvection);
+
 template <>
 InputParameters
 validParams<DGFunctionTemperatureAdvection>()

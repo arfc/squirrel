@@ -1,6 +1,8 @@
 #include "Function.h"
 #include "VelocityFunctionTemperatureOutflowBC.h"
 
+registerMooseObject("SquirrelApp", VelocityFunctionTemperatureOutflowBC);
+
 template <>
 InputParameters
 validParams<VelocityFunctionTemperatureOutflowBC>()

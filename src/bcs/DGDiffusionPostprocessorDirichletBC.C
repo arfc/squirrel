@@ -11,6 +11,8 @@
 // C++ includes
 #include <cmath>
 
+registerMooseObject("SquirrelApp", DGDiffusionPostprocessorDirichletBC);
+
 template <>
 InputParameters
 validParams<DGDiffusionPostprocessorDirichletBC>()

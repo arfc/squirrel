@@ -1,5 +1,7 @@
 #include "DiffusiveFluxBC.h"
 
+registerMooseObject("SquirrelApp", DiffusiveFluxBC);
+
 template <>
 InputParameters
 validParams<DiffusiveFluxBC>()

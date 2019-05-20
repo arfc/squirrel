@@ -1,5 +1,7 @@
 #include "Density.h"
 
+registerMooseObject("SquirrelApp", Density);
+
 template <>
 InputParameters
 validParams<Density>()

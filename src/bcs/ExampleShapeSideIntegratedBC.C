@@ -1,6 +1,8 @@
 
 #include "ExampleShapeSideIntegratedBC.h"
 
+registerMooseObject("SquirrelApp", ExampleShapeSideIntegratedBC);
+
 template <>
 InputParameters
 validParams<ExampleShapeSideIntegratedBC>()
