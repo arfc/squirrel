@@ -27,9 +27,9 @@ protected:
   const MaterialProperty<Real> & _cp;
   const MaterialProperty<Real> & _d_cp_d_u;
 
-  Function & _vel_x_func;
-  Function & _vel_y_func;
-  Function & _vel_z_func;
+  const Function & _vel_x_func;
+  const Function & _vel_y_func;
+  const Function & _vel_z_func;
 };
 
 #endif // VELOCITYFUNCTIONTEMPERATUREADVECTION_H
