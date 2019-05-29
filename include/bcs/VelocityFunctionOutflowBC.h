@@ -17,9 +17,9 @@ protected:
   virtual Real computeQpResidual();
   virtual Real computeQpJacobian();
 
-  Function & _vel_x_func;
-  Function & _vel_y_func;
-  Function & _vel_z_func;
+  const Function & _vel_x_func;
+  const Function & _vel_y_func;
+  const Function & _vel_z_func;
 };
 
 #endif // VELOCITYFUNCTIONOUTFLOWBC_H
