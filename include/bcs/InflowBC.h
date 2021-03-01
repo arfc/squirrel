@@ -1,5 +1,4 @@
-#ifndef INFLOWBC_H
-#define INFLOWBC_H
+#pragma once
 
 #include "IntegratedBC.h"
 
@@ -19,5 +18,3 @@ protected:
   const Real & _ww;
   const Real & _inlet_conc;
 };
-
-#endif // INFLOWBC_H

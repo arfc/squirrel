@@ -1,5 +1,4 @@
-#ifndef DGFUNCTIONCONVECTION_H
-#define DGFUNCTIONCONVECTION_H
+#pragma once
 
 #include "DGKernel.h"
 
@@ -20,5 +19,3 @@ protected:
   const Function & _vel_y_func;
   const Function & _vel_z_func;
 };
-
-#endif // DGFUNCTIONCONVECTION_H

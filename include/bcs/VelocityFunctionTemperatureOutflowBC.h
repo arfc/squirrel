@@ -1,5 +1,4 @@
-#ifndef VELOCITYFUNCTIONTEMPERATUREOUTFLOWBC_H
-#define VELOCITYFUNCTIONTEMPERATUREOUTFLOWBC_H
+#pragma once
 
 #include "IntegratedBC.h"
 #include "JvarMapInterface.h"
@@ -27,5 +26,3 @@ protected:
   const Function & _vel_y_func;
   const Function & _vel_z_func;
 };
-
-#endif // VELOCITYFUNCTIONTEMPERATUREOUTFLOWBC_H

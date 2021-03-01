@@ -1,5 +1,4 @@
-#ifndef DENSITY_H
-#define DENSITY_H
+#pragma once
 
 #include "AuxKernel.h"
 
@@ -17,5 +16,3 @@ protected:
 
   const VariableValue & _density_log;
 };
-
-#endif // DENSITY_H

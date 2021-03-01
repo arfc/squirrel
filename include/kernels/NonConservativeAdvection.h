@@ -1,5 +1,4 @@
-#ifndef NONCONSERVATIVEADVECTION_H
-#define NONCONSERVATIVEADVECTION_H
+#pragma once
 
 #include "Kernel.h"
 
@@ -16,5 +15,3 @@ protected:
 
   RealVectorValue _velocity;
 };
-
-#endif // NONCONSERVATIVEADVECTION_H

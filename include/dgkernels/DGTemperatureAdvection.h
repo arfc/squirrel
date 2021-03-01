@@ -1,5 +1,4 @@
-#ifndef DGTEMPERATUREADVECTION_H
-#define DGTEMPERATUREADVECTION_H
+#pragma once
 
 #include "DGKernel.h"
 
@@ -18,5 +17,3 @@ protected:
   const MaterialProperty<Real> & _rho;
   const MaterialProperty<Real> & _cp;
 };
-
-#endif // DGTEMPERATUREADVECTION_H

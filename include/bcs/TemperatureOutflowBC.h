@@ -1,5 +1,4 @@
-#ifndef TEMPERATUREOUTFLOWBC_H
-#define TEMPERATUREOUTFLOWBC_H
+#pragma once
 
 #include "OutflowBC.h"
 #include "JvarMapInterface.h"
@@ -23,5 +22,3 @@ protected:
   const MaterialProperty<Real> & _cp;
   const MaterialProperty<Real> & _d_cp_d_u;
 };
-
-#endif // TEMPERATUREOUTFLOWBC_H

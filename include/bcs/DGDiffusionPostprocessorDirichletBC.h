@@ -1,5 +1,4 @@
-#ifndef DGDIFFUSIONPOSTPROCESSORDIRICHLETBC_H
-#define DGDIFFUSIONPOSTPROCESSORDIRICHLETBC_H
+#pragma once
 
 #include "IntegratedBC.h"
 
@@ -22,5 +21,3 @@ protected:
   const Real & _sigma;
   const MaterialProperty<Real> & _diff;
 };
-
-#endif // DGDIFFUSIONPOSTPROCESSORDIRICHLETBC_H

@@ -1,5 +1,4 @@
-#ifndef POTENTIALADVECTION_H_
-#define POTENTIALADVECTION_H_
+#pragma once
 
 #include "Kernel.h"
 
@@ -23,5 +22,3 @@ private:
   VariableGradient _default;
   const VariableGradient & _grad_potential;
 };
-
-#endif // POTENTIALADVECTION_H

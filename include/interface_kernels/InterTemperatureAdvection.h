@@ -1,5 +1,4 @@
-#ifndef INTERTEMPERATUREADVECTION_H
-#define INTERTEMPERATUREADVECTION_H
+#pragma once
 
 #include "InterfaceKernel.h"
 
@@ -20,5 +19,3 @@ protected:
   virtual Real computeQpResidual(Moose::DGResidualType type) override;
   virtual Real computeQpJacobian(Moose::DGJacobianType type) override;
 };
-
-#endif // INTERTEMPERATUREADVECTION_H

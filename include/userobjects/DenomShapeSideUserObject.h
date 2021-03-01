@@ -1,6 +1,4 @@
-
-#ifndef DENOMSHAPESIDEUSEROBJECT_H
-#define DENOMSHAPESIDEUSEROBJECT_H
+#pragma once
 
 #include "ShapeSideUserObject.h"
 
@@ -40,5 +38,3 @@ protected:
   unsigned int _u_var;
   const VariableGradient & _grad_u;
 };
-
-#endif

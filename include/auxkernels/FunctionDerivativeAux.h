@@ -1,5 +1,4 @@
-#ifndef FUNCTIONDERIVATIVEAUX_H
-#define FUNCTIONDERIVATIVEAUX_H
+#pragma once
 
 #include "AuxKernel.h"
 
@@ -27,5 +26,3 @@ protected:
   const Function & _func;
   unsigned int _component;
 };
-
-#endif // FUNCTIONDERIVATIVEAUX_H

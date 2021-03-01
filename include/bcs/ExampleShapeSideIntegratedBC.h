@@ -1,6 +1,4 @@
-
-#ifndef EXAMPLESHAPESIDEINTEGRATEDBC_H
-#define EXAMPLESHAPESIDEINTEGRATEDBC_H
+#pragma once
 
 #include "NonlocalIntegratedBC.h"
 #include "NumShapeSideUserObject.h"
@@ -34,4 +32,3 @@ protected:
   const std::vector<dof_id_type> & _v_dofs;
   Real _Vb;
 };
-#endif // EXAMPLESHAPESIDEINTEGRATEDBC_H

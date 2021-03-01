@@ -1,5 +1,4 @@
-#ifndef DIFFUSIVEFLUXBC_H
-#define DIFFUSIVEFLUXBC_H
+#pragma once
 
 #include "IntegratedBC.h"
 #include "JvarMapInterface.h"
@@ -21,5 +20,3 @@ protected:
   const MaterialProperty<Real> & _D;
   const MaterialProperty<Real> & _d_D_d_u;
 };
-
-#endif // DIFFUSIVEFLUXBC_H

@@ -1,6 +1,4 @@
-
-#ifndef NUMSHAPESIDEUSEROBJECT_H
-#define NUMSHAPESIDEUSEROBJECT_H
+#pragma once
 
 #include "ShapeSideUserObject.h"
 
@@ -40,5 +38,3 @@ protected:
   unsigned int _u_var;
   const VariableGradient & _grad_u;
 };
-
-#endif

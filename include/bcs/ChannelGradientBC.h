@@ -1,6 +1,4 @@
-
-#ifndef CHANNELGRADIENTBC_H
-#define CHANNELGRADIENTBC_H
+#pragma once
 
 #include "IntegratedBC.h"
 
@@ -21,5 +19,3 @@ protected:
   const VectorPostprocessorValue & _channel_gradient_value;
   const MaterialProperty<Real> & _h;
 };
-
-#endif // CHANNELGRADIENTBC_H

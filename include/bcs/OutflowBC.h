@@ -1,5 +1,4 @@
-#ifndef OUTFLOWBC_H
-#define OUTFLOWBC_H
+#pragma once
 
 #include "IntegratedBC.h"
 
@@ -16,5 +15,3 @@ protected:
 
   RealVectorValue _velocity;
 };
-
-#endif // OUTFLOWBC_H

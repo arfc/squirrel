@@ -1,5 +1,4 @@
-#ifndef MATINSTEMPERATURETIMEDERIVATIVE_H
-#define MATINSTEMPERATURETIMEDERIVATIVE_H
+#pragma once
 
 #include "TimeDerivative.h"
 #include "JvarMapInterface.h"
@@ -29,5 +28,3 @@ protected:
   const MaterialProperty<Real> & _cp;
   const MaterialProperty<Real> & _d_cp_d_u;
 };
-
-#endif // MATINSTEMPERATURETIMEDERIVATIVE_H

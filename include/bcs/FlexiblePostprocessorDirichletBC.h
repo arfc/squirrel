@@ -1,5 +1,4 @@
-#ifndef FLEXIBLEPOSTPROCESSORDIRICHLETBC_H
-#define FLEXIBLEPOSTPROCESSORDIRICHLETBC_H
+#pragma once
 
 #include "NodalBC.h"
 
@@ -24,5 +23,3 @@ protected:
   const Real & _scale;
   const Real & _offset;
 };
-
-#endif /* FLEXIBLEPOSTPROCESSORDIRICHLETBC_H */

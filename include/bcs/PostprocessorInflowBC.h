@@ -1,5 +1,4 @@
-#ifndef POSTPROCESSORINFLOWBC_H
-#define POSTPROCESSORINFLOWBC_H
+#pragma once
 
 #include "IntegratedBC.h"
 
@@ -21,5 +20,3 @@ protected:
   const Real & _scale;
   const Real & _offset;
 };
-
-#endif // POSTPROCESSORINFLOWBC_H

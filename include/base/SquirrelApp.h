@@ -1,5 +1,4 @@
-#ifndef SQUIRRELAPP_H
-#define SQUIRRELAPP_H
+#pragma once
 
 #include "MooseApp.h"
 
@@ -15,5 +14,3 @@ public:
   static void registerApps();
   static void registerAll(Factory & f, ActionFactory & af, Syntax & s);
 };
-
-#endif /* SQUIRRELAPP_H */

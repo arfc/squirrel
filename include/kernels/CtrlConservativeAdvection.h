@@ -1,5 +1,4 @@
-#ifndef CTRLCONSERVATIVEADVECTION_H
-#define CTRLCONSERVATIVEADVECTION_H
+#pragma once
 
 #include "Kernel.h"
 
@@ -19,5 +18,3 @@ protected:
   const Real & _vv;
   const Real & _ww;
 };
-
-#endif // CTRLCONSERVATIVEADVECTION_H

@@ -1,5 +1,4 @@
-#ifndef CTRLCONSERVATIVETEMPERATUREADVECTION_H
-#define CTRLCONSERVATIVETEMPERATUREADVECTION_H
+#pragma once
 
 #include "CtrlConservativeAdvection.h"
 #include "JvarMapInterface.h"
@@ -23,5 +22,3 @@ protected:
   const MaterialProperty<Real> & _cp;
   const MaterialProperty<Real> & _d_cp_d_u;
 };
-
-#endif // CONSERVATIVETEMPERATUREADVECTION_H

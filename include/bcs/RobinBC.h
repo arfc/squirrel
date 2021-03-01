@@ -1,6 +1,4 @@
-
-#ifndef ROBINBC_H
-#define ROBINBC_H
+#pragma once
 
 #include "IntegratedBC.h"
 
@@ -17,5 +15,3 @@ protected:
 
   Real _velocity;
 };
-
-#endif // ROBINBC_H

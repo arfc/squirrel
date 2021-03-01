@@ -1,5 +1,4 @@
-#ifndef VELOCITYFUNCTIONOUTFLOWBC_H
-#define VELOCITYFUNCTIONOUTFLOWBC_H
+#pragma once
 
 #include "IntegratedBC.h"
 
@@ -18,5 +17,3 @@ protected:
   const Function & _vel_y_func;
   const Function & _vel_z_func;
 };
-
-#endif // VELOCITYFUNCTIONOUTFLOWBC_H

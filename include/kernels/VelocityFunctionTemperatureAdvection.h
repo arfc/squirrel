@@ -1,5 +1,4 @@
-#ifndef VELOCITYFUNCTIONTEMPERATUREADVECTION_H
-#define VELOCITYFUNCTIONTEMPERATUREADVECTION_H
+#pragma once
 
 #include "Kernel.h"
 #include "JvarMapInterface.h"
@@ -27,5 +26,3 @@ protected:
   const Function & _vel_y_func;
   const Function & _vel_z_func;
 };
-
-#endif // VELOCITYFUNCTIONTEMPERATUREADVECTION_H

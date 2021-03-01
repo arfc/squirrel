@@ -1,5 +1,4 @@
-#ifndef POSTPROCESSORTEMPERATUREINFLOWBC_H
-#define POSTPROCESSORTEMPERATUREINFLOWBC_H
+#pragma once
 
 #include "PostprocessorInflowBC.h"
 #include "JvarMapInterface.h"
@@ -23,5 +22,3 @@ protected:
   const MaterialProperty<Real> & _cp;
   const MaterialProperty<Real> & _d_cp_d_u;
 };
-
-#endif // POSTPROCESSORTEMPERATUREINFLOWBC_H

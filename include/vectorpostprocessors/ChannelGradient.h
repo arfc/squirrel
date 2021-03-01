@@ -1,5 +1,4 @@
-#ifndef CHANNELGRADIENT_H
-#define CHANNELGRADIENT_H
+#pragma once
 
 #include "GeneralVectorPostprocessor.h"
 
@@ -43,5 +42,3 @@ protected:
   VectorPostprocessorValue * _axis_values;
   VectorPostprocessorValue * _gradient_values;
 };
-
-#endif

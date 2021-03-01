@@ -1,5 +1,4 @@
-#ifndef MATINSTEMPERATURENOBCBC_H
-#define MATINSTEMPERATURENOBCBC_H
+#pragma once
 
 #include "IntegratedBC.h"
 
@@ -23,5 +22,3 @@ protected:
 
   const MaterialProperty<Real> & _k;
 };
-
-#endif // MATINSTEMPERATURENOBCBC_H

@@ -1,5 +1,4 @@
-#ifndef DGFUNCTIONTEMPERATUREADVECTION_H
-#define DGFUNCTIONTEMPERATUREADVECTION_H
+#pragma once
 
 #include "DGFunctionConvection.h"
 #include "DerivativeMaterialInterface.h"
@@ -19,5 +18,3 @@ protected:
   const MaterialProperty<Real> & _rho;
   const MaterialProperty<Real> & _cp;
 };
-
-#endif // DGFUNCTIONTEMPERATUREADVECTION_H
