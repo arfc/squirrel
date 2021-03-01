@@ -1,15 +1,8 @@
-#ifndef MATINSTEMPERATURETIMEDERIVATIVE_H
-#define MATINSTEMPERATURETIMEDERIVATIVE_H
+#pragma once
 
 #include "TimeDerivative.h"
 #include "JvarMapInterface.h"
 #include "DerivativeMaterialInterface.h"
-
-// Forward Declarations
-class MatINSTemperatureTimeDerivative;
-
-template <>
-InputParameters validParams<MatINSTemperatureTimeDerivative>();
 
 /**
  * This class computes the time derivative for the incompressible
@@ -20,6 +13,8 @@ class MatINSTemperatureTimeDerivative
 {
 public:
   MatINSTemperatureTimeDerivative(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
   virtual ~MatINSTemperatureTimeDerivative() {}
 
@@ -33,5 +28,3 @@ protected:
   const MaterialProperty<Real> & _cp;
   const MaterialProperty<Real> & _d_cp_d_u;
 };
-
-#endif // MATINSTEMPERATURETIMEDERIVATIVE_H

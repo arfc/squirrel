@@ -1,21 +1,17 @@
-#ifndef DGFUNCTIONCONVECTION_H
-#define DGFUNCTIONCONVECTION_H
+#pragma once
 
 #include "DGKernel.h"
-
-class DGFunctionConvection;
-
-template <>
-InputParameters validParams<DGFunctionConvection>();
 
 class DGFunctionConvection : public DGKernel
 {
 public:
   DGFunctionConvection(const InputParameters & parameters);
 
+  static InputParameters validParams();
+
 protected:
-  virtual Real computeQpResidual(Moose::DGResidualType type);
-  virtual Real computeQpJacobian(Moose::DGJacobianType type);
+  virtual Real computeQpResidual(Moose::DGResidualType type) override;
+  virtual Real computeQpJacobian(Moose::DGJacobianType type) override;
 
   RealVectorValue _velocity;
 
@@ -23,5 +19,3 @@ protected:
   const Function & _vel_y_func;
   const Function & _vel_z_func;
 };
-
-#endif // DGFUNCTIONCONVECTION_H

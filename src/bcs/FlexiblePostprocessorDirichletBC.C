@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", FlexiblePostprocessorDirichletBC);
 
-template <>
 InputParameters
-validParams<FlexiblePostprocessorDirichletBC>()
+FlexiblePostprocessorDirichletBC::validParams()
 {
-  InputParameters p = validParams<NodalBC>();
+  InputParameters p = NodalBC::validParams();
   p.addRequiredParam<PostprocessorName>("postprocessor",
                                         "The postprocessor to set the value to on the boundary.");
   p.addParam<Real>("scale", 1., "The amount to scale the postprocessor value by");

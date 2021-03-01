@@ -3,11 +3,10 @@
 
 registerMooseObject("SquirrelApp", VelocityFunctionTemperatureAdvection);
 
-template <>
 InputParameters
-validParams<VelocityFunctionTemperatureAdvection>()
+VelocityFunctionTemperatureAdvection::validParams()
 {
-  InputParameters params = validParams<Kernel>();
+  InputParameters params = Kernel::validParams();
   params.addRequiredParam<FunctionName>("vel_x_func", "The x velocity function");
   params.addRequiredParam<FunctionName>("vel_y_func", "The y velocity function");
   params.addRequiredParam<FunctionName>("vel_z_func", "The z velocity function");

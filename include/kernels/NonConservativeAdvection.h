@@ -1,18 +1,13 @@
-#ifndef NONCONSERVATIVEADVECTION_H
-#define NONCONSERVATIVEADVECTION_H
+#pragma once
 
 #include "Kernel.h"
-
-// Forward Declaration
-class NonConservativeAdvection;
-
-template <>
-InputParameters validParams<NonConservativeAdvection>();
 
 class NonConservativeAdvection : public Kernel
 {
 public:
   NonConservativeAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeQpResidual();
@@ -20,5 +15,3 @@ protected:
 
   RealVectorValue _velocity;
 };
-
-#endif // NONCONSERVATIVEADVECTION_H

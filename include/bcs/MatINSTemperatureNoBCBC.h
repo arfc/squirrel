@@ -1,13 +1,6 @@
-#ifndef MATINSTEMPERATURENOBCBC_H
-#define MATINSTEMPERATURENOBCBC_H
+#pragma once
 
 #include "IntegratedBC.h"
-
-// Forward Declarations
-class MatINSTemperatureNoBCBC;
-
-template <>
-InputParameters validParams<MatINSTemperatureNoBCBC>();
 
 /**
  * This class implements the "No BC" boundary condition
@@ -18,14 +11,14 @@ class MatINSTemperatureNoBCBC : public IntegratedBC
 public:
   MatINSTemperatureNoBCBC(const InputParameters & parameters);
 
+  static InputParameters validParams();
+
   virtual ~MatINSTemperatureNoBCBC() {}
 
 protected:
-  virtual Real computeQpResidual();
-  virtual Real computeQpJacobian();
-  virtual Real computeQpOffDiagJacobian(unsigned jvar);
+  virtual Real computeQpResidual() override;
+  virtual Real computeQpJacobian() override;
+  virtual Real computeQpOffDiagJacobian(unsigned jvar) override;
 
   const MaterialProperty<Real> & _k;
 };
-
-#endif // MATINSTEMPERATURENOBCBC_H

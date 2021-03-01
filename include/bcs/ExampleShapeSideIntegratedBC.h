@@ -1,6 +1,4 @@
-
-#ifndef EXAMPLESHAPESIDEINTEGRATEDBC_H
-#define EXAMPLESHAPESIDEINTEGRATEDBC_H
+#pragma once
 
 #include "NonlocalIntegratedBC.h"
 #include "NumShapeSideUserObject.h"
@@ -11,14 +9,16 @@ class ExampleShapeSideIntegratedBC : public NonlocalIntegratedBC
 public:
   ExampleShapeSideIntegratedBC(const InputParameters & parameters);
 
+  static InputParameters validParams();
+
 protected:
-  virtual Real computeQpResidual();
-  virtual Real computeQpJacobian();
-  virtual Real computeQpOffDiagJacobian(unsigned int jvar);
+  virtual Real computeQpResidual() override;
+  virtual Real computeQpJacobian() override;
+  virtual Real computeQpOffDiagJacobian(unsigned int jvar) override;
   /// new method for on-diagonal jacobian contributions corresponding to non-local dofs
-  virtual Real computeQpNonlocalJacobian(dof_id_type dof_index);
+  virtual Real computeQpNonlocalJacobian(dof_id_type dof_index) override;
   /// new method for off-diagonal jacobian contributions corresponding to non-local dofs
-  virtual Real computeQpNonlocalOffDiagJacobian(unsigned int jvar, dof_id_type dof_index);
+  virtual Real computeQpNonlocalOffDiagJacobian(unsigned int jvar, dof_id_type dof_index) override;
 
   const NumShapeSideUserObject & _num_shp;
   const Real & _num_shp_integral;
@@ -32,8 +32,3 @@ protected:
   const std::vector<dof_id_type> & _v_dofs;
   Real _Vb;
 };
-
-template <>
-InputParameters validParams<ExampleShapeSideIntegratedBC>();
-
-#endif // EXAMPLESHAPESIDEINTEGRATEDBC_H

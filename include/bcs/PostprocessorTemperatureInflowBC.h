@@ -1,20 +1,16 @@
-#ifndef POSTPROCESSORTEMPERATUREINFLOWBC_H
-#define POSTPROCESSORTEMPERATUREINFLOWBC_H
+#pragma once
 
 #include "PostprocessorInflowBC.h"
 #include "JvarMapInterface.h"
 #include "DerivativeMaterialInterface.h"
-
-class PostprocessorTemperatureInflowBC;
-
-template <>
-InputParameters validParams<PostprocessorTemperatureInflowBC>();
 
 class PostprocessorTemperatureInflowBC
     : public DerivativeMaterialInterface<JvarMapIntegratedBCInterface<PostprocessorInflowBC>>
 {
 public:
   PostprocessorTemperatureInflowBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual void initialSetup() override;
@@ -26,5 +22,3 @@ protected:
   const MaterialProperty<Real> & _cp;
   const MaterialProperty<Real> & _d_cp_d_u;
 };
-
-#endif // POSTPROCESSORTEMPERATUREINFLOWBC_H

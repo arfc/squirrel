@@ -1,18 +1,13 @@
-#ifndef DGDIFFUSIONPOSTPROCESSORDIRICHLETBC_H
-#define DGDIFFUSIONPOSTPROCESSORDIRICHLETBC_H
+#pragma once
 
 #include "IntegratedBC.h"
-
-// Forward Declarations
-class DGDiffusionPostprocessorDirichletBC;
-
-template <>
-InputParameters validParams<DGDiffusionPostprocessorDirichletBC>();
 
 class DGDiffusionPostprocessorDirichletBC : public IntegratedBC
 {
 public:
   DGDiffusionPostprocessorDirichletBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeQpResidual() override;
@@ -26,5 +21,3 @@ protected:
   const Real & _sigma;
   const MaterialProperty<Real> & _diff;
 };
-
-#endif // DGDIFFUSIONPOSTPROCESSORDIRICHLETBC_H

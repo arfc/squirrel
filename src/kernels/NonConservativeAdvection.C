@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", NonConservativeAdvection);
 
-template <>
 InputParameters
-validParams<NonConservativeAdvection>()
+NonConservativeAdvection::validParams()
 {
-  InputParameters params = validParams<Kernel>();
+  InputParameters params = Kernel::validParams();
   params.addRequiredParam<RealVectorValue>("velocity", "Velocity Vector");
   return params;
 }

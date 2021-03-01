@@ -1,12 +1,6 @@
-#ifndef FLEXIBLEPOSTPROCESSORDIRICHLETBC_H
-#define FLEXIBLEPOSTPROCESSORDIRICHLETBC_H
+#pragma once
 
 #include "NodalBC.h"
-
-class FlexiblePostprocessorDirichletBC;
-
-template <>
-InputParameters validParams<FlexiblePostprocessorDirichletBC>();
 
 /**
  * Boundary condition of a Dirichlet type
@@ -19,6 +13,8 @@ class FlexiblePostprocessorDirichletBC : public NodalBC
 public:
   FlexiblePostprocessorDirichletBC(const InputParameters & parameters);
 
+  static InputParameters validParams();
+
 protected:
   virtual Real computeQpResidual() override;
 
@@ -27,5 +23,3 @@ protected:
   const Real & _scale;
   const Real & _offset;
 };
-
-#endif /* FLEXIBLEPOSTPROCESSORDIRICHLETBC_H */

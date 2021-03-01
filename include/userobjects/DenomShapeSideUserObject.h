@@ -1,14 +1,6 @@
-
-#ifndef DENOMSHAPESIDEUSEROBJECT_H
-#define DENOMSHAPESIDEUSEROBJECT_H
+#pragma once
 
 #include "ShapeSideUserObject.h"
-
-// Forward Declarations
-class DenomShapeSideUserObject;
-
-template <>
-InputParameters validParams<DenomShapeSideUserObject>();
 
 /**
  * Test and proof of concept class for computing UserObject Jacobians using the
@@ -23,13 +15,15 @@ class DenomShapeSideUserObject : public ShapeSideUserObject
 public:
   DenomShapeSideUserObject(const InputParameters & parameters);
 
+  static InputParameters validParams();
+
   virtual ~DenomShapeSideUserObject() {}
 
-  virtual void initialize();
-  virtual void execute();
-  virtual void executeJacobian(unsigned int jvar);
-  virtual void finalize();
-  virtual void threadJoin(const UserObject & y);
+  virtual void initialize() override;
+  virtual void execute() override;
+  virtual void executeJacobian(unsigned int jvar) override;
+  virtual void finalize() override;
+  virtual void threadJoin(const UserObject & y) override;
 
   ///@{ custom UserObject interface functions
   const Real & getIntegral() const { return _integral; }
@@ -44,5 +38,3 @@ protected:
   unsigned int _u_var;
   const VariableGradient & _grad_u;
 };
-
-#endif

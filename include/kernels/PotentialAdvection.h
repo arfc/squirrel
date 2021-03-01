@@ -1,17 +1,14 @@
-#ifndef POTENTIALADVECTION_H_
-#define POTENTIALADVECTION_H_
+#pragma once
 
 #include "Kernel.h"
-
-class PotentialAdvection;
-
-template <>
-InputParameters validParams<PotentialAdvection>();
 
 class PotentialAdvection : public Kernel
 {
 public:
   PotentialAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
+
   virtual ~PotentialAdvection();
 
 protected:
@@ -25,5 +22,3 @@ private:
   VariableGradient _default;
   const VariableGradient & _grad_potential;
 };
-
-#endif // POTENTIALADVECTION_H

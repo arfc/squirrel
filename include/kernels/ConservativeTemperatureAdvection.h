@@ -1,21 +1,16 @@
-#ifndef CONSERVATIVETEMPERATUREADVECTION_H
-#define CONSERVATIVETEMPERATUREADVECTION_H
+#pragma once
 
 #include "ConservativeAdvection.h"
 #include "JvarMapInterface.h"
 #include "DerivativeMaterialInterface.h"
-
-// Forward Declaration
-class ConservativeTemperatureAdvection;
-
-template <>
-InputParameters validParams<ConservativeTemperatureAdvection>();
 
 class ConservativeTemperatureAdvection
     : public DerivativeMaterialInterface<JvarMapKernelInterface<ConservativeAdvection>>
 {
 public:
   ConservativeTemperatureAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual void initialSetup() override;
@@ -27,5 +22,3 @@ protected:
   const MaterialProperty<Real> & _cp;
   const MaterialProperty<Real> & _d_cp_d_u;
 };
-
-#endif // CONSERVATIVETEMPERATUREADVECTION_H

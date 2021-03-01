@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", DGFunctionTemperatureAdvection);
 
-template <>
 InputParameters
-validParams<DGFunctionTemperatureAdvection>()
+DGFunctionTemperatureAdvection::validParams()
 {
-  InputParameters params = validParams<DGFunctionConvection>();
+  InputParameters params = DGFunctionConvection::validParams();
   params.addClassDescription("DG upwinding for func temp convection");
   return params;
 }

@@ -1,17 +1,13 @@
-#ifndef DGCOUPLEDADVECTION_H
-#define DGCOUPLEDADVECTION_H
+#pragma once
 
 #include "DGKernel.h"
-
-class DGCoupledAdvection;
-
-template <>
-InputParameters validParams<DGCoupledAdvection>();
 
 class DGCoupledAdvection : public DGKernel
 {
 public:
   DGCoupledAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeQpResidual(Moose::DGResidualType type) override;
@@ -30,5 +26,3 @@ private:
   unsigned int _y_vel_var_number;
   unsigned int _z_vel_var_number;
 };
-
-#endif // DGCOUPLEDADVECTION_H

@@ -1,20 +1,16 @@
-#ifndef VELOCITYFUNCTIONTEMPERATUREOUTFLOWBC_H
-#define VELOCITYFUNCTIONTEMPERATUREOUTFLOWBC_H
+#pragma once
 
 #include "IntegratedBC.h"
 #include "JvarMapInterface.h"
 #include "DerivativeMaterialInterface.h"
-
-class VelocityFunctionTemperatureOutflowBC;
-
-template <>
-InputParameters validParams<VelocityFunctionTemperatureOutflowBC>();
 
 class VelocityFunctionTemperatureOutflowBC
     : public DerivativeMaterialInterface<JvarMapIntegratedBCInterface<IntegratedBC>>
 {
 public:
   VelocityFunctionTemperatureOutflowBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual void initialSetup() override;
@@ -30,5 +26,3 @@ protected:
   const Function & _vel_y_func;
   const Function & _vel_z_func;
 };
-
-#endif // VELOCITYFUNCTIONTEMPERATUREOUTFLOWBC_H

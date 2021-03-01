@@ -1,21 +1,16 @@
-#ifndef VELOCITYFUNCTIONTEMPERATUREADVECTION_H
-#define VELOCITYFUNCTIONTEMPERATUREADVECTION_H
+#pragma once
 
 #include "Kernel.h"
 #include "JvarMapInterface.h"
 #include "DerivativeMaterialInterface.h"
-
-// Forward Declaration
-class VelocityFunctionTemperatureAdvection;
-
-template <>
-InputParameters validParams<VelocityFunctionTemperatureAdvection>();
 
 class VelocityFunctionTemperatureAdvection
     : public DerivativeMaterialInterface<JvarMapKernelInterface<Kernel>>
 {
 public:
   VelocityFunctionTemperatureAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual void initialSetup() override;
@@ -31,5 +26,3 @@ protected:
   const Function & _vel_y_func;
   const Function & _vel_z_func;
 };
-
-#endif // VELOCITYFUNCTIONTEMPERATUREADVECTION_H

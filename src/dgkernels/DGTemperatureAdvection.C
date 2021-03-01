@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", DGTemperatureAdvection);
 
-template <>
 InputParameters
-validParams<DGTemperatureAdvection>()
+DGTemperatureAdvection::validParams()
 {
-  InputParameters params = validParams<DGKernel>();
+  InputParameters params = DGKernel::validParams();
   params.addRequiredParam<RealVectorValue>("velocity", "Velocity vector");
   params.addClassDescription("DG upwinding for the convection");
   return params;

@@ -1,20 +1,16 @@
-#ifndef TEMPERATUREOUTFLOWBC_H
-#define TEMPERATUREOUTFLOWBC_H
+#pragma once
 
 #include "OutflowBC.h"
 #include "JvarMapInterface.h"
 #include "DerivativeMaterialInterface.h"
-
-class TemperatureOutflowBC;
-
-template <>
-InputParameters validParams<TemperatureOutflowBC>();
 
 class TemperatureOutflowBC
     : public DerivativeMaterialInterface<JvarMapIntegratedBCInterface<OutflowBC>>
 {
 public:
   TemperatureOutflowBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual void initialSetup() override;
@@ -26,5 +22,3 @@ protected:
   const MaterialProperty<Real> & _cp;
   const MaterialProperty<Real> & _d_cp_d_u;
 };
-
-#endif // TEMPERATUREOUTFLOWBC_H

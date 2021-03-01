@@ -1,17 +1,13 @@
-#ifndef INTERTEMPERATUREADVECTION_H
-#define INTERTEMPERATUREADVECTION_H
+#pragma once
 
 #include "InterfaceKernel.h"
-
-class InterTemperatureAdvection;
-
-template <>
-InputParameters validParams<InterTemperatureAdvection>();
 
 class InterTemperatureAdvection : public InterfaceKernel
 {
 public:
   InterTemperatureAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   const Real & _uu;
@@ -20,8 +16,6 @@ protected:
   const MaterialProperty<Real> & _rho;
   const MaterialProperty<Real> & _cp;
   const Real & _heat_source;
-  virtual Real computeQpResidual(Moose::DGResidualType type);
-  virtual Real computeQpJacobian(Moose::DGJacobianType type);
+  virtual Real computeQpResidual(Moose::DGResidualType type) override;
+  virtual Real computeQpJacobian(Moose::DGJacobianType type) override;
 };
-
-#endif // INTERTEMPERATUREADVECTION_H

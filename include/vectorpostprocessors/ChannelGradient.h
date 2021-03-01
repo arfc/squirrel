@@ -1,13 +1,6 @@
-#ifndef CHANNELGRADIENT_H
-#define CHANNELGRADIENT_H
+#pragma once
 
 #include "GeneralVectorPostprocessor.h"
-
-// Forward Declarations
-class ChannelGradient;
-
-template <>
-InputParameters validParams<ChannelGradient>();
 
 /**
  *  ChannelGradient is a VectorPostprocessor that performs a least squares
@@ -22,6 +15,8 @@ public:
     * @param parameters The input parameters
     */
   ChannelGradient(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
   /**
    * Initialize, clears old results
@@ -47,5 +42,3 @@ protected:
   VectorPostprocessorValue * _axis_values;
   VectorPostprocessorValue * _gradient_values;
 };
-
-#endif

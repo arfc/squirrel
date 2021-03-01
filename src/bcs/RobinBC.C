@@ -3,11 +3,10 @@
 
 registerMooseObject("SquirrelApp", RobinBC);
 
-template <>
 InputParameters
-validParams<RobinBC>()
+RobinBC::validParams()
 {
-  InputParameters params = validParams<IntegratedBC>();
+  InputParameters params = IntegratedBC::validParams();
   params.addParam<Real>("velocity", 1, "The 1D velocity.");
   return params;
 }

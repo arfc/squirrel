@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", InterTemperatureAdvection);
 
-template <>
 InputParameters
-validParams<InterTemperatureAdvection>()
+InterTemperatureAdvection::validParams()
 {
-  InputParameters params = validParams<InterfaceKernel>();
+  InputParameters params = InterfaceKernel::validParams();
   params.addClassDescription("DG upwinding for the convection");
   params.addParam<Real>("heat_source", "Should have units of power/length^2");
   params.addParam<Real>("u_val", 0, "x velocity cm/s");

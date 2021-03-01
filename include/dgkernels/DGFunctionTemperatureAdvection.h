@@ -1,18 +1,14 @@
-#ifndef DGFUNCTIONTEMPERATUREADVECTION_H
-#define DGFUNCTIONTEMPERATUREADVECTION_H
+#pragma once
 
 #include "DGFunctionConvection.h"
 #include "DerivativeMaterialInterface.h"
-
-class DGFunctionTemperatureAdvection;
-
-template <>
-InputParameters validParams<DGFunctionTemperatureAdvection>();
 
 class DGFunctionTemperatureAdvection : public DerivativeMaterialInterface<DGFunctionConvection>
 {
 public:
   DGFunctionTemperatureAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual void initialSetup() override;
@@ -22,5 +18,3 @@ protected:
   const MaterialProperty<Real> & _rho;
   const MaterialProperty<Real> & _cp;
 };
-
-#endif // DGFUNCTIONTEMPERATUREADVECTION_H

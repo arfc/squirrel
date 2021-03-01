@@ -1,24 +1,17 @@
-
-#ifndef ROBINBC_H
-#define ROBINBC_H
+#pragma once
 
 #include "IntegratedBC.h"
-
-class RobinBC;
-
-template <>
-InputParameters validParams<RobinBC>();
 
 class RobinBC : public IntegratedBC
 {
 public:
   RobinBC(const InputParameters & parameters);
 
+  static InputParameters validParams();
+
 protected:
-  virtual Real computeQpResidual();
-  virtual Real computeQpJacobian();
+  virtual Real computeQpResidual() override;
+  virtual Real computeQpJacobian() override;
 
   Real _velocity;
 };
-
-#endif // ROBINBC_H

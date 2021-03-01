@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", Density);
 
-template <>
 InputParameters
-validParams<Density>()
+Density::validParams()
 {
-  InputParameters params = validParams<AuxKernel>();
+  InputParameters params = AuxKernel::validParams();
 
   params.addRequiredCoupledVar("density_log", "The variable representing the log of the density.");
   return params;

@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", MatINSTemperatureNoBCBC);
 
-template <>
 InputParameters
-validParams<MatINSTemperatureNoBCBC>()
+MatINSTemperatureNoBCBC::validParams()
 {
-  InputParameters params = validParams<IntegratedBC>();
+  InputParameters params = IntegratedBC::validParams();
 
   // Required parameters
   params.addParam<MaterialPropertyName>("k",

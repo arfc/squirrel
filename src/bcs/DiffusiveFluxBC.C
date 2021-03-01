@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", DiffusiveFluxBC);
 
-template <>
 InputParameters
-validParams<DiffusiveFluxBC>()
+DiffusiveFluxBC::validParams()
 {
-  InputParameters params = validParams<IntegratedBC>();
+  InputParameters params = IntegratedBC::validParams();
   params.addParam<MaterialPropertyName>(
       "D_name", "D", "The name of the diffusivity, conductivity, or viscosity.");
   return params;

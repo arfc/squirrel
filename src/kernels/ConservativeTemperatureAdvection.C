@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", ConservativeTemperatureAdvection);
 
-template <>
 InputParameters
-validParams<ConservativeTemperatureAdvection>()
+ConservativeTemperatureAdvection::validParams()
 {
-  InputParameters params = validParams<ConservativeAdvection>();
+  InputParameters params = ConservativeAdvection::validParams();
   return params;
 }
 

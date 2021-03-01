@@ -3,11 +3,10 @@
 
 registerMooseObject("SquirrelApp", DGFunctionConvection);
 
-template <>
 InputParameters
-validParams<DGFunctionConvection>()
+DGFunctionConvection::validParams()
 {
-  InputParameters params = validParams<DGKernel>();
+  InputParameters params = DGKernel::validParams();
   params.addRequiredParam<FunctionName>("vel_x_func", "The x velocity function");
   params.addRequiredParam<FunctionName>("vel_y_func", "The y velocity function");
   params.addRequiredParam<FunctionName>("vel_z_func", "The z velocity function");

@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", CtrlConservativeAdvection);
 
-template <>
 InputParameters
-validParams<CtrlConservativeAdvection>()
+CtrlConservativeAdvection::validParams()
 {
-  InputParameters params = validParams<Kernel>();
+  InputParameters params = Kernel::validParams();
   params.addRequiredParam<Real>("u_val", "x-direction velocity");
   params.addRequiredParam<Real>("v_val", "y-direction velocity");
   params.addRequiredParam<Real>("w_val", "z-direction velocity");
