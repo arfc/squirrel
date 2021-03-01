@@ -4,11 +4,7 @@
 #include "AuxKernel.h"
 
 // Forward Declarations
-class FunctionDerivativeAux;
 class Function;
-
-template <>
-InputParameters validParams<FunctionDerivativeAux>();
 
 /**
  * Function auxiliary value
@@ -21,6 +17,8 @@ public:
    * constructor.
    */
   FunctionDerivativeAux(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeValue() override;

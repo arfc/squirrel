@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", OutflowBC);
 
-template <>
 InputParameters
-validParams<OutflowBC>()
+OutflowBC::validParams()
 {
-  InputParameters params = validParams<IntegratedBC>();
+  InputParameters params = IntegratedBC::validParams();
   params.addRequiredParam<RealVectorValue>("velocity", "Velocity vector");
   params.addClassDescription("DG upwinding for the convection");
   return params;

@@ -3,15 +3,12 @@
 
 #include "IntegratedBC.h"
 
-class VelocityFunctionOutflowBC;
-
-template <>
-InputParameters validParams<VelocityFunctionOutflowBC>();
-
 class VelocityFunctionOutflowBC : public IntegratedBC
 {
 public:
   VelocityFunctionOutflowBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeQpResidual();

@@ -11,6 +11,8 @@ class ExampleShapeSideIntegratedBC : public NonlocalIntegratedBC
 public:
   ExampleShapeSideIntegratedBC(const InputParameters & parameters);
 
+  static InputParameters validParams();
+
 protected:
   virtual Real computeQpResidual();
   virtual Real computeQpJacobian();
@@ -32,8 +34,4 @@ protected:
   const std::vector<dof_id_type> & _v_dofs;
   Real _Vb;
 };
-
-template <>
-InputParameters validParams<ExampleShapeSideIntegratedBC>();
-
 #endif // EXAMPLESHAPESIDEINTEGRATEDBC_H

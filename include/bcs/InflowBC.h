@@ -3,15 +3,12 @@
 
 #include "IntegratedBC.h"
 
-class InflowBC;
-
-template <>
-InputParameters validParams<InflowBC>();
-
 class InflowBC : public IntegratedBC
 {
 public:
   InflowBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   const Real & _uu;

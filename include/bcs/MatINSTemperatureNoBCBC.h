@@ -3,12 +3,6 @@
 
 #include "IntegratedBC.h"
 
-// Forward Declarations
-class MatINSTemperatureNoBCBC;
-
-template <>
-InputParameters validParams<MatINSTemperatureNoBCBC>();
-
 /**
  * This class implements the "No BC" boundary condition
  * discussed by Griffiths, Papanastiou, and others.
@@ -17,6 +11,8 @@ class MatINSTemperatureNoBCBC : public IntegratedBC
 {
 public:
   MatINSTemperatureNoBCBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
   virtual ~MatINSTemperatureNoBCBC() {}
 

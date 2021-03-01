@@ -3,16 +3,12 @@
 
 #include "Kernel.h"
 
-// Forward Declaration
-class CtrlConservativeAdvection;
-
-template <>
-InputParameters validParams<CtrlConservativeAdvection>();
-
 class CtrlConservativeAdvection : public Kernel
 {
 public:
   CtrlConservativeAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeQpResidual();

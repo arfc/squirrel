@@ -5,12 +5,6 @@
 #include "JvarMapInterface.h"
 #include "DerivativeMaterialInterface.h"
 
-// Forward Declarations
-class MatINSTemperatureTimeDerivative;
-
-template <>
-InputParameters validParams<MatINSTemperatureTimeDerivative>();
-
 /**
  * This class computes the time derivative for the incompressible
  * Navier-Stokes momentum equation.
@@ -20,6 +14,8 @@ class MatINSTemperatureTimeDerivative
 {
 public:
   MatINSTemperatureTimeDerivative(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
   virtual ~MatINSTemperatureTimeDerivative() {}
 

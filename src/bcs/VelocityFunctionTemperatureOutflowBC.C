@@ -3,11 +3,10 @@
 
 registerMooseObject("SquirrelApp", VelocityFunctionTemperatureOutflowBC);
 
-template <>
 InputParameters
-validParams<VelocityFunctionTemperatureOutflowBC>()
+VelocityFunctionTemperatureOutflowBC::validParams()
 {
-  InputParameters params = validParams<IntegratedBC>();
+  InputParameters params = IntegratedBC::validParams();
   params.addRequiredParam<FunctionName>("vel_x_func", "The x velocity function");
   params.addRequiredParam<FunctionName>("vel_y_func", "The y velocity function");
   params.addRequiredParam<FunctionName>("vel_z_func", "The z velocity function");

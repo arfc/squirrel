@@ -4,12 +4,6 @@
 
 #include "ShapeSideUserObject.h"
 
-// Forward Declarations
-class NumShapeSideUserObject;
-
-template <>
-InputParameters validParams<NumShapeSideUserObject>();
-
 /**
  * Test and proof of concept class for computing UserObject Jacobians using the
  * ShapeSideUserObject base class. This object computes the integral
@@ -22,6 +16,8 @@ class NumShapeSideUserObject : public ShapeSideUserObject
 {
 public:
   NumShapeSideUserObject(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
   virtual ~NumShapeSideUserObject() {}
 

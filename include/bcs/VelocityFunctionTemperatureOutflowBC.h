@@ -5,16 +5,13 @@
 #include "JvarMapInterface.h"
 #include "DerivativeMaterialInterface.h"
 
-class VelocityFunctionTemperatureOutflowBC;
-
-template <>
-InputParameters validParams<VelocityFunctionTemperatureOutflowBC>();
-
 class VelocityFunctionTemperatureOutflowBC
     : public DerivativeMaterialInterface<JvarMapIntegratedBCInterface<IntegratedBC>>
 {
 public:
   VelocityFunctionTemperatureOutflowBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual void initialSetup() override;

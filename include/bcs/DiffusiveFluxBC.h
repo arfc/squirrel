@@ -5,16 +5,13 @@
 #include "JvarMapInterface.h"
 #include "DerivativeMaterialInterface.h"
 
-class DiffusiveFluxBC;
-
-template <>
-InputParameters validParams<DiffusiveFluxBC>();
-
 class DiffusiveFluxBC
     : public DerivativeMaterialInterface<JvarMapIntegratedBCInterface<IntegratedBC>>
 {
 public:
   DiffusiveFluxBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual void initialSetup() override;

@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", MatINSTemperatureTimeDerivative);
 
-template <>
 InputParameters
-validParams<MatINSTemperatureTimeDerivative>()
+MatINSTemperatureTimeDerivative::validParams()
 {
-  InputParameters params = validParams<TimeDerivative>();
+  InputParameters params = TimeDerivative::validParams();
   return params;
 }
 

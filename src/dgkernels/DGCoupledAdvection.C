@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", DGCoupledAdvection);
 
-template <>
 InputParameters
-validParams<DGCoupledAdvection>()
+DGCoupledAdvection::validParams()
 {
-  InputParameters params = validParams<DGKernel>();
+  InputParameters params = DGKernel::validParams();
   params.addRequiredCoupledVar("uvel", "x direction velocity");
   params.addCoupledVar("vvel", 0, "y direction velocity");
   params.addCoupledVar("wvel", 0, "z direction velocity");

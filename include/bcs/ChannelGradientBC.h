@@ -4,15 +4,12 @@
 
 #include "IntegratedBC.h"
 
-class ChannelGradientBC;
-
-template <>
-InputParameters validParams<ChannelGradientBC>();
-
 class ChannelGradientBC : public IntegratedBC
 {
 public:
   ChannelGradientBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real getGradient();

@@ -3,15 +3,12 @@
 
 #include "IntegratedBC.h"
 
-class OutflowBC;
-
-template <>
-InputParameters validParams<OutflowBC>();
-
 class OutflowBC : public IntegratedBC
 {
 public:
   OutflowBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeQpResidual();

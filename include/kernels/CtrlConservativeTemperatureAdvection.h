@@ -5,17 +5,13 @@
 #include "JvarMapInterface.h"
 #include "DerivativeMaterialInterface.h"
 
-// Forward Declaration
-class CtrlConservativeTemperatureAdvection;
-
-template <>
-InputParameters validParams<CtrlConservativeTemperatureAdvection>();
-
 class CtrlConservativeTemperatureAdvection
     : public DerivativeMaterialInterface<JvarMapKernelInterface<CtrlConservativeAdvection>>
 {
 public:
   CtrlConservativeTemperatureAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual void initialSetup() override;

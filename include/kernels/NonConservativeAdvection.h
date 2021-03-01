@@ -3,16 +3,12 @@
 
 #include "Kernel.h"
 
-// Forward Declaration
-class NonConservativeAdvection;
-
-template <>
-InputParameters validParams<NonConservativeAdvection>();
-
 class NonConservativeAdvection : public Kernel
 {
 public:
   NonConservativeAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeQpResidual();

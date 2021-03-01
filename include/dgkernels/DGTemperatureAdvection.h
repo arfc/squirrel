@@ -3,15 +3,12 @@
 
 #include "DGKernel.h"
 
-class DGTemperatureAdvection;
-
-template <>
-InputParameters validParams<DGTemperatureAdvection>();
-
 class DGTemperatureAdvection : public DGKernel
 {
 public:
   DGTemperatureAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeQpResidual(Moose::DGResidualType type);

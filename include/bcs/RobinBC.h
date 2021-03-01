@@ -4,15 +4,12 @@
 
 #include "IntegratedBC.h"
 
-class RobinBC;
-
-template <>
-InputParameters validParams<RobinBC>();
-
 class RobinBC : public IntegratedBC
 {
 public:
   RobinBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeQpResidual();

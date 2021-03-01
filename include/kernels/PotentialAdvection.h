@@ -3,15 +3,13 @@
 
 #include "Kernel.h"
 
-class PotentialAdvection;
-
-template <>
-InputParameters validParams<PotentialAdvection>();
-
 class PotentialAdvection : public Kernel
 {
 public:
   PotentialAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
+
   virtual ~PotentialAdvection();
 
 protected:

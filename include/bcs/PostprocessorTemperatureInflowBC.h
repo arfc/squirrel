@@ -5,16 +5,13 @@
 #include "JvarMapInterface.h"
 #include "DerivativeMaterialInterface.h"
 
-class PostprocessorTemperatureInflowBC;
-
-template <>
-InputParameters validParams<PostprocessorTemperatureInflowBC>();
-
 class PostprocessorTemperatureInflowBC
     : public DerivativeMaterialInterface<JvarMapIntegratedBCInterface<PostprocessorInflowBC>>
 {
 public:
   PostprocessorTemperatureInflowBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual void initialSetup() override;

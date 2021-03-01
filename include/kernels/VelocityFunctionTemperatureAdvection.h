@@ -5,17 +5,13 @@
 #include "JvarMapInterface.h"
 #include "DerivativeMaterialInterface.h"
 
-// Forward Declaration
-class VelocityFunctionTemperatureAdvection;
-
-template <>
-InputParameters validParams<VelocityFunctionTemperatureAdvection>();
-
 class VelocityFunctionTemperatureAdvection
     : public DerivativeMaterialInterface<JvarMapKernelInterface<Kernel>>
 {
 public:
   VelocityFunctionTemperatureAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual void initialSetup() override;

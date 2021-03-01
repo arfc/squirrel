@@ -3,15 +3,12 @@
 
 #include "AuxKernel.h"
 
-class Density;
-
-template <>
-InputParameters validParams<Density>();
-
 class Density : public AuxKernel
 {
 public:
   Density(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
   virtual ~Density() {}
 

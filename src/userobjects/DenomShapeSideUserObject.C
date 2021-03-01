@@ -4,11 +4,10 @@
 
 registerMooseObject("SquirrelApp", DenomShapeSideUserObject);
 
-template <>
 InputParameters
-validParams<DenomShapeSideUserObject>()
+DenomShapeSideUserObject::validParams()
 {
-  InputParameters params = validParams<ShapeSideUserObject>();
+  InputParameters params = ShapeSideUserObject::validParams();
   params.addRequiredCoupledVar("u", "Charged specie density.");
   return params;
 }

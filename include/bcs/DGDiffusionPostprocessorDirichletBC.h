@@ -3,16 +3,12 @@
 
 #include "IntegratedBC.h"
 
-// Forward Declarations
-class DGDiffusionPostprocessorDirichletBC;
-
-template <>
-InputParameters validParams<DGDiffusionPostprocessorDirichletBC>();
-
 class DGDiffusionPostprocessorDirichletBC : public IntegratedBC
 {
 public:
   DGDiffusionPostprocessorDirichletBC(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeQpResidual() override;

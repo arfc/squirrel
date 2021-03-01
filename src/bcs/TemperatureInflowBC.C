@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", TemperatureInflowBC);
 
-template <>
 InputParameters
-validParams<TemperatureInflowBC>()
+TemperatureInflowBC::validParams()
 {
-  InputParameters params = validParams<InflowBC>();
+  InputParameters params = InflowBC::validParams();
   return params;
 }
 

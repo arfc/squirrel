@@ -3,15 +3,12 @@
 
 #include "DGKernel.h"
 
-class DGCoupledAdvection;
-
-template <>
-InputParameters validParams<DGCoupledAdvection>();
-
 class DGCoupledAdvection : public DGKernel
 {
 public:
   DGCoupledAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   virtual Real computeQpResidual(Moose::DGResidualType type) override;

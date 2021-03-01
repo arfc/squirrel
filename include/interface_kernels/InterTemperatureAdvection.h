@@ -3,15 +3,12 @@
 
 #include "InterfaceKernel.h"
 
-class InterTemperatureAdvection;
-
-template <>
-InputParameters validParams<InterTemperatureAdvection>();
-
 class InterTemperatureAdvection : public InterfaceKernel
 {
 public:
   InterTemperatureAdvection(const InputParameters & parameters);
+
+  static InputParameters validParams();
 
 protected:
   const Real & _uu;

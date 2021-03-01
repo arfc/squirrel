@@ -2,11 +2,10 @@
 
 registerMooseObject("SquirrelApp", PostprocessorInflowBC);
 
-template <>
 InputParameters
-validParams<PostprocessorInflowBC>()
+PostprocessorInflowBC::validParams()
 {
-  InputParameters params = validParams<IntegratedBC>();
+  InputParameters params = IntegratedBC::validParams();
   params.addParam<Real>("uu", 0, "The x-component of the velocity");
   params.addParam<Real>("vv", 0, "The y-component of the velocity");
   params.addParam<Real>("ww", 0, "The z-component of the velocity");

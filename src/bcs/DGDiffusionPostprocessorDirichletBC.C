@@ -13,11 +13,10 @@
 
 registerMooseObject("SquirrelApp", DGDiffusionPostprocessorDirichletBC);
 
-template <>
 InputParameters
-validParams<DGDiffusionPostprocessorDirichletBC>()
+DGDiffusionPostprocessorDirichletBC::validParams()
 {
-  InputParameters params = validParams<IntegratedBC>();
+  InputParameters params = IntegratedBC::validParams();
   params.addParam<Real>("value", 0.0, "The value the variable should have on the boundary");
   params.addRequiredParam<PostprocessorName>("postprocessor",
                                              "The postprocessor providing the "
