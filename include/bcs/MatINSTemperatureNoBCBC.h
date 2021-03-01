@@ -17,9 +17,9 @@ public:
   virtual ~MatINSTemperatureNoBCBC() {}
 
 protected:
-  virtual Real computeQpResidual();
-  virtual Real computeQpJacobian();
-  virtual Real computeQpOffDiagJacobian(unsigned jvar);
+  virtual Real computeQpResidual() override;
+  virtual Real computeQpJacobian() override;
+  virtual Real computeQpOffDiagJacobian(unsigned jvar) override;
 
   const MaterialProperty<Real> & _k;
 };

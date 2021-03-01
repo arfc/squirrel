@@ -13,8 +13,8 @@ public:
 
 protected:
   virtual Real getGradient();
-  virtual Real computeQpResidual();
-  virtual Real computeQpJacobian();
+  virtual Real computeQpResidual() override;
+  virtual Real computeQpJacobian() override;
 
   const MooseEnum _axis;
   const VectorPostprocessorValue & _channel_gradient_axis_coordinate;

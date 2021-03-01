@@ -11,8 +11,8 @@ public:
   static InputParameters validParams();
 
 protected:
-  virtual Real computeQpResidual();
-  virtual Real computeQpJacobian();
+  virtual Real computeQpResidual() override;
+  virtual Real computeQpJacobian() override;
 
   RealVectorValue _velocity;
 };

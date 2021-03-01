@@ -11,8 +11,8 @@ public:
   static InputParameters validParams();
 
 protected:
-  virtual Real computeQpResidual();
-  virtual Real computeQpJacobian();
+  virtual Real computeQpResidual() override;
+  virtual Real computeQpJacobian() override;
 
   const Function & _vel_x_func;
   const Function & _vel_y_func;

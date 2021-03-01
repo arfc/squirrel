@@ -21,11 +21,11 @@ public:
 
   virtual ~DenomShapeSideUserObject() {}
 
-  virtual void initialize();
-  virtual void execute();
-  virtual void executeJacobian(unsigned int jvar);
-  virtual void finalize();
-  virtual void threadJoin(const UserObject & y);
+  virtual void initialize() override;
+  virtual void execute() override;
+  virtual void executeJacobian(unsigned int jvar) override;
+  virtual void finalize() override;
+  virtual void threadJoin(const UserObject & y) override;
 
   ///@{ custom UserObject interface functions
   const Real & getIntegral() const { return _integral; }

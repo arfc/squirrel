@@ -11,12 +11,13 @@ public:
   static InputParameters validParams();
 
 protected:
+  virtual Real computeQpResidual() override;
+  virtual Real computeQpJacobian() override;
+
   const Real & _uu;
   const Real & _vv;
   const Real & _ww;
   const Real & _inlet_conc;
-  virtual Real computeQpResidual();
-  virtual Real computeQpJacobian();
 };
 
 #endif // INFLOWBC_H
