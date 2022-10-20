@@ -1,0 +1,21 @@
+Content:
+    - ${ROOT_DIR}/doc/content
+    - ${MOOSE_DIR}/framework/doc/content
+
+Renderer:
+    type: MooseDocs.base.MaterializeRenderer
+
+Extensions:
+    MooseDocs.extensions.navigation:
+        name: Squirrel
+    MooseDocs.extensions.appsyntax:
+        executable: ${ROOT_DIR}
+        remove: !include ${MOOSE_DIR}/framework/doc/remove.yml
+        unregister: !include ${MOOSE_DIR}/framework/doc/unregister.yml
+        includes:
+            - include
+    MooseDocs.extensions.common:
+        shortcuts:
+            framework: !include ${MOOSE_DIR}/framework/doc/globals.yml
+    MooseDocs.extensions.acronym:
+        acronyms: !include ${MOOSE_DIR}/framework/doc/acronyms.yml
