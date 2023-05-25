@@ -30,7 +30,7 @@ SquirrelApp::~SquirrelApp() {}
 void
 SquirrelApp::registerAll(Factory & f, ActionFactory & af, Syntax & s)
 {
-  ModulesApp::registerAll(f, af, s);
+  ModulesApp::registerAllObjects<SquirrelApp>(f, af, s);
   Registry::registerObjectsTo(f, {"SquirrelApp"});
   Registry::registerActionsTo(af, {"SquirrelApp"});
 
