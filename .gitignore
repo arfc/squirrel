@@ -143,3 +143,12 @@ include/base/*Revision.h
 # phase_field/tests/solution_rasterizer
 out.xyz
 build
+
+# Testing generated file
+.previous_test_results.json
+
+# Software info metadata file generated during make
+squirrel.yaml
+
+# VSCode dotfolder
+.vscode
