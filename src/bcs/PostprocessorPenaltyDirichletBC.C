@@ -18,19 +18,19 @@ PostprocessorPenaltyDirichletBC::validParams()
 PostprocessorPenaltyDirichletBC::PostprocessorPenaltyDirichletBC(
     const InputParameters & parameters)
   : IntegratedBC(parameters),
-    _p(getParam<Real>("penalty")),
-    _pp(getPostprocessorValue("postprocessor"))
+    _penalty(getParam<Real>("penalty")),
+    _postprocessor(getPostprocessorValue("postprocessor"))
 {
 }
 
 Real
 PostprocessorPenaltyDirichletBC::computeQpResidual()
 {
-  return _p * _test[_i][_qp] * (-_pp + _u[_qp]);
+  return _penalty * _test[_i][_qp] * (-_postprocessor + _u[_qp]);
 }
 
 Real
 PostprocessorPenaltyDirichletBC::computeQpJacobian()
 {
-  return _p * _phi[_j][_qp] * _test[_i][_qp];
+  return _penalty * _phi[_j][_qp] * _test[_i][_qp];
 }
