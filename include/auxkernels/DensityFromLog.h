@@ -2,14 +2,14 @@
 
 #include "AuxKernel.h"
 
-class Density : public AuxKernel
+class DensityFromLog : public AuxKernel
 {
 public:
-  Density(const InputParameters & parameters);
+  DensityFromLog(const InputParameters & parameters);
 
   static InputParameters validParams();
 
-  virtual ~Density() {}
+  virtual ~DensityFromLog() {}
 
 protected:
   virtual Real computeValue() override;
