@@ -1,9 +1,9 @@
-#include "Density.h"
+#include "DensityFromLog.h"
 
-registerMooseObject("SquirrelApp", Density);
+registerMooseObject("SquirrelApp", DensityFromLog);
 
 InputParameters
-Density::validParams()
+DensityFromLog::validParams()
 {
   InputParameters params = AuxKernel::validParams();
 
@@ -11,7 +11,7 @@ Density::validParams()
   return params;
 }
 
-Density::Density(const InputParameters & parameters)
+DensityFromLog::DensityFromLog(const InputParameters & parameters)
   : AuxKernel(parameters),
 
     _density_log(coupledValue("density_log"))
@@ -19,7 +19,7 @@ Density::Density(const InputParameters & parameters)
 }
 
 Real
-Density::computeValue()
+DensityFromLog::computeValue()
 {
   return std::exp(_density_log[_qp]);
 }

@@ -139,6 +139,6 @@ h = ${fparse (Nu * k) / half_channel_length}
 [Functions]
   [./ffn]
     type = ParsedFunction
-    value = '1'
+    expression = '1'
   [../]
 []
