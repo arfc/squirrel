@@ -27,12 +27,12 @@ DiffusiveFluxBC::initialSetup()
 Real
 DiffusiveFluxBC::computeQpResidual()
 {
-  return _normals[_qp] * -_D[_qp] * _grad_u[_qp];
+  return -_test[_i][_qp] * _normals[_qp] * _D[_qp] * _grad_u[_qp];
 }
 
 Real
 DiffusiveFluxBC::computeQpJacobian()
 {
-  return -_normals[_qp] *
+  return -_test[_i][_qp] * _normals[_qp] *
          (_d_D_d_u[_qp] * _phi[_j][_qp] * _grad_u[_qp] + _D[_qp] * _grad_phi[_j][_qp]);
 }

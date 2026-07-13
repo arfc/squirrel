@@ -1,0 +1,16 @@
+[Tests]
+  [heat_addition]
+    type = Exodiff
+    input = 'inter_temperature_advection.i'
+    exodiff = 'inter_temperature_advection_out.e'
+    requirement = 'The system shall exchange advected enthalpy across a block interface, adding heat to the downstream stream.'
+  []
+  [heat_removal]
+    type = Exodiff
+    input = 'inter_temperature_advection.i'
+    cli_args = 'InterfaceKernels/exchanger/heat_source=1
+                Outputs/file_base=heat_removal_out'
+    exodiff = 'heat_removal_out.e'
+    requirement = 'The system shall remove heat from the downstream stream when the interface heat source sign is reversed.'
+  []
+[]

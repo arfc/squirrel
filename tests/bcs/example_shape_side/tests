@@ -1,0 +1,23 @@
+[Tests]
+  [floating_electrode]
+    type = Exodiff
+    input = 'example_shape_side.i'
+    exodiff = 'example_shape_side_out.e'
+    requirement = 'The system shall float a boundary potential using nonlocal surface integrals of a coupled species supplied by shape side user objects.'
+  []
+  [larger_bias]
+    type = Exodiff
+    input = 'example_shape_side.i'
+    cli_args = 'Vb=5
+                Outputs/file_base=larger_bias_out'
+    exodiff = 'larger_bias_out.e'
+    requirement = 'The system shall shift the floated boundary potential with the applied bias.'
+  []
+  [jacobian]
+    type = PetscJacobianTester
+    input = 'example_shape_side.i'
+    run_sim = true
+    cli_args = 'Outputs/exodus=false'
+    requirement = 'The system shall provide the nonlocal Jacobian contributions of the shape side boundary condition.'
+  []
+[]

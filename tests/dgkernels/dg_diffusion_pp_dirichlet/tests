@@ -1,0 +1,16 @@
+[Tests]
+  [dg_diffusion_pp_dirichlet]
+    type = Exodiff
+    input = 'dg_diffusion_pp_dirichlet.i'
+    exodiff = 'dg_diffusion_pp_dirichlet_out.e'
+    requirement = 'The system shall weakly impose a Dirichlet value from a postprocessor on a discontinuous Galerkin diffusion problem.'
+  []
+  [hotter_inlet]
+    type = Exodiff
+    input = 'dg_diffusion_pp_dirichlet.i'
+    cli_args = 'BCs/hot/offset=0.5
+                Outputs/file_base=hotter_inlet_out'
+    exodiff = 'hotter_inlet_out.e'
+    requirement = 'The system shall steepen the discontinuous Galerkin diffusion profile when the postprocessor boundary offset increases.'
+  []
+[]
