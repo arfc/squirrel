@@ -1,0 +1,16 @@
+[Tests]
+  [robin]
+    type = Exodiff
+    input = 'robin.i'
+    exodiff = 'robin_out.e'
+    requirement = 'The system shall apply a Robin outflow boundary condition proportional to the local solution value.'
+  []
+  [faster_flow]
+    type = Exodiff
+    input = 'robin.i'
+    cli_args = 'v=5
+                Outputs/file_base=faster_flow_out'
+    exodiff = 'faster_flow_out.e'
+    requirement = 'The system shall scale the Robin outflow boundary condition with the specified velocity.'
+  []
+[]

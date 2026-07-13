@@ -1,0 +1,17 @@
+[Tests]
+  [constant_properties]
+    type = CSVDiff
+    input = 'heated_slab.i'
+    csvdiff = 'heated_slab_out.csv'
+    requirement = 'The system shall integrate the transient enthalpy accumulation term with constant density and specific heat.'
+  []
+  [variable_properties_jacobian]
+    type = PetscJacobianTester
+    input = 'heated_slab.i'
+    run_sim = true
+    cli_args = 'Materials/rho/expression=2*(1+0.5*T)
+                Materials/cp/expression=3*(1+0.25*T)
+                Outputs/csv=false'
+    requirement = 'The system shall provide an exact Jacobian for the transient enthalpy accumulation term with temperature-dependent properties.'
+  []
+[]

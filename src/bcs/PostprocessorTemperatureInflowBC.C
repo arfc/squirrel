@@ -6,6 +6,8 @@ InputParameters
 PostprocessorTemperatureInflowBC::validParams()
 {
   InputParameters params = PostprocessorInflowBC::validParams();
+  params.addParam<MaterialPropertyName>("rho", "rho", "Density material property name");
+  params.addParam<MaterialPropertyName>("cp", "cp", "Specific heat material property name");
   return params;
 }
 

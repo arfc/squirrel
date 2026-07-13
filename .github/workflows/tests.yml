@@ -1,0 +1,64 @@
+# Adapted from the RACCOON project's test workflow:
+# https://github.com/hugary1995/raccoon/blob/devel/.github/workflows/tests.yml
+
+name: Tests
+
+on:
+  # Triggers the workflow on pushes to the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  # Squirrel does not carry MOOSE as a submodule, so CI clones it next to the
+  # checkout.  Pin this to the MOOSE commit the downstream apps use whenever
+  # master drifts away from squirrel.
+  MOOSE_REF: master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash -el {0}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: squirrel
+
+      - name: Clone MOOSE
+        run: |
+          git clone --depth 1 --branch "${MOOSE_REF}" https://github.com/idaholab/moose.git moose
+
+      - name: Setup environment
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-name: moose
+          condarc: |
+            channels:
+              - https://conda.software.inl.gov/public
+              - conda-forge
+            channel_priority: flexible
+          init-shell: bash
+          create-args: moose-dev mpich
+        continue-on-error: false
+
+      - name: Compile squirrel
+        working-directory: squirrel
+        env:
+          MOOSE_DIR: ${{ github.workspace }}/moose
+        run: |
+          make -j 4
+
+      - name: Regression tests
+        working-directory: squirrel
+        env:
+          MOOSE_DIR: ${{ github.workspace }}/moose
+        run: |
+          ./run_tests -j 4

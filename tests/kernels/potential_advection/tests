@@ -1,0 +1,22 @@
+[Tests]
+  [positive_charge]
+    type = Exodiff
+    input = 'potential_advection.i'
+    exodiff = 'potential_advection_out.e'
+    requirement = 'The system shall drift a positively charged scalar down the gradient of a prescribed potential.'
+  []
+  [negative_charge]
+    type = Exodiff
+    input = 'potential_advection.i'
+    cli_args = 'Kernels/drift/positive_charge=false
+                Outputs/file_base=negative_charge_out'
+    exodiff = 'negative_charge_out.e'
+    requirement = 'The system shall drift a negatively charged scalar up the gradient of a prescribed potential.'
+  []
+  [jacobian]
+    type = PetscJacobianTester
+    input = 'potential_advection.i'
+    run_sim = true
+    requirement = 'The system shall provide an exact Jacobian for potential-driven drift of a charged scalar.'
+  []
+[]
