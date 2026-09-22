@@ -1,7 +1,7 @@
 # Adapted from the RACCOON project's test workflow:
 # https://github.com/hugary1995/raccoon/blob/devel/.github/workflows/tests.yml
 
-name: Tests
+name: Squirrel Continuous Integration (CI) Testing
 
 on:
   # Triggers the workflow on pushes to the master branch
