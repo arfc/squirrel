@@ -1,0 +1,18 @@
+[Tests]
+  [channel_gradient]
+    type = CSVDiff
+    input = 'channel_gradient.i'
+    csvdiff = 'channel_gradient_out.csv
+               channel_gradient_out_channel_gradient_0001.csv'
+    requirement = 'The system shall compute the axial profile of the difference between two line samplers and apply it as a wall heat transfer boundary condition.'
+  []
+  [adiabatic_wall]
+    type = CSVDiff
+    input = 'channel_gradient.i'
+    cli_args = 'Nu=0
+                Outputs/file_base=adiabatic_wall_out'
+    csvdiff = 'adiabatic_wall_out.csv
+               adiabatic_wall_out_channel_gradient_0001.csv'
+    requirement = 'The system shall recover an insulated wall when the heat transfer coefficient of the channel gradient boundary condition is zero.'
+  []
+[]

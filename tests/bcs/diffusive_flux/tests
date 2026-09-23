@@ -1,0 +1,27 @@
+[Tests]
+  [mat_ins_temperature_no_bc]
+    type = Exodiff
+    input = 'diffusive_flux.i'
+    exodiff = 'diffusive_flux_out.e'
+    requirement = 'The system shall reintroduce the conductive surface term at an outflow boundary so that heat conducts out consistently with the interior temperature gradient.'
+  []
+  [diffusive_flux]
+    type = Exodiff
+    input = 'diffusive_flux.i'
+    cli_args = 'BCs/outlet_conduction/enable=false
+                BCs/outlet_diffusive_flux/enable=true
+                Outputs/file_base=diffusive_flux_bc_out'
+    exodiff = 'diffusive_flux_bc_out.e'
+    requirement = 'The system shall apply a diffusive flux at a boundary equal to the conductivity times the outward normal temperature gradient.'
+  []
+  [diffusive_flux_jacobian]
+    type = PetscJacobianTester
+    input = 'diffusive_flux.i'
+    run_sim = true
+    cli_args = 'BCs/outlet_conduction/enable=false
+                BCs/outlet_diffusive_flux/enable=true
+                k=0.1*(1+0.5*T)
+                Outputs/exodus=false'
+    requirement = 'The system shall provide an exact Jacobian for the diffusive flux boundary condition with a temperature-dependent conductivity.'
+  []
+[]

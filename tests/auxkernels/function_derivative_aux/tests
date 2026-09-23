@@ -1,0 +1,17 @@
+[Tests]
+  [x_derivative]
+    type = Exodiff
+    input = 'function_derivative_aux.i'
+    exodiff = 'function_derivative_aux_out.e'
+    requirement = 'The system shall evaluate a component of a function gradient at nodes and at element quadrature points.'
+  []
+  [y_derivative]
+    type = Exodiff
+    input = 'function_derivative_aux.i'
+    cli_args = 'AuxKernels/nodal/component=2
+                AuxKernels/elemental/component=2
+                Outputs/file_base=y_derivative_out'
+    exodiff = 'y_derivative_out.e'
+    requirement = 'The system shall return a zero derivative for the direction in which the sampled function is constant.'
+  []
+[]

@@ -1,0 +1,17 @@
+[Tests]
+  [forward]
+    type = Exodiff
+    input = 'nonconservative_advection.i'
+    exodiff = 'nonconservative_advection_out.e'
+    requirement = 'The system shall advect a scalar in non-conservative form driven from the inlet.'
+  []
+  [reverse]
+    type = Exodiff
+    input = 'nonconservative_advection.i'
+    cli_args = 'v=-1
+                BCs/inlet/boundary=right
+                Outputs/file_base=reverse_out'
+    exodiff = 'reverse_out.e'
+    requirement = 'The system shall advect a scalar in non-conservative form for a reversed velocity driven from the opposite boundary.'
+  []
+[]

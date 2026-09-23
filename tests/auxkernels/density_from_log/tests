@@ -1,0 +1,16 @@
+[Tests]
+  [density_from_log]
+    type = Exodiff
+    input = 'density_from_log.i'
+    exodiff = 'density_from_log_out.e'
+    requirement = 'The system shall recover a density field by exponentiating a log-density variable.'
+  []
+  [larger_scale_height]
+    type = Exodiff
+    input = 'density_from_log.i'
+    cli_args = 'H=2
+                Outputs/file_base=larger_scale_height_out'
+    exodiff = 'larger_scale_height_out.e'
+    requirement = 'The system shall flatten the recovered density profile as the log-density scale height increases.'
+  []
+[]

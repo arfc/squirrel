@@ -10,6 +10,8 @@ VelocityFunctionTemperatureOutflowBC::validParams()
   params.addRequiredParam<FunctionName>("vel_x_func", "The x velocity function");
   params.addRequiredParam<FunctionName>("vel_y_func", "The y velocity function");
   params.addRequiredParam<FunctionName>("vel_z_func", "The z velocity function");
+  params.addParam<MaterialPropertyName>("rho", "rho", "Density material property name");
+  params.addParam<MaterialPropertyName>("cp", "cp", "Specific heat material property name");
   return params;
 }
 

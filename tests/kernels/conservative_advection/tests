@@ -1,0 +1,90 @@
+[Tests]
+  [scalar]
+    type = Exodiff
+    input = 'conservative_advection.i'
+    exodiff = 'conservative_advection_out.e'
+    requirement = 'The system shall advect a scalar in conservative form with an inflow and an outflow boundary condition.'
+  []
+  [ctrl]
+    type = Exodiff
+    input = 'conservative_advection.i'
+    cli_args = 'Kernels/advection/enable=false
+                Kernels/ctrl_advection/enable=true
+                Outputs/file_base=ctrl_out'
+    exodiff = 'ctrl_out.e'
+    requirement = 'The system shall advect a scalar in conservative form using a controllable constant velocity.'
+  []
+  [postprocessor_inlet]
+    type = Exodiff
+    input = 'conservative_advection.i'
+    cli_args = 'BCs/inlet/enable=false
+                BCs/pp_inlet/enable=true
+                Outputs/file_base=pp_inlet_out'
+    exodiff = 'pp_inlet_out.e'
+    requirement = 'The system shall set the inflow concentration of an advected scalar from a postprocessor value.'
+  []
+  [temperature]
+    type = Exodiff
+    input = 'conservative_advection.i'
+    cli_args = 'Kernels/advection/type=ConservativeTemperatureAdvection
+                BCs/inlet/type=TemperatureInflowBC
+                BCs/outlet/type=TemperatureOutflowBC
+                Materials/rho/expression=2
+                Materials/cp/expression=3
+                Outputs/file_base=temperature_out'
+    exodiff = 'temperature_out.e'
+    requirement = 'The system shall advect enthalpy in conservative form, scaling the conserved advection, inflow, and outflow terms by the density and specific heat.'
+  []
+  [ctrl_temperature]
+    type = Exodiff
+    input = 'conservative_advection.i'
+    cli_args = 'Kernels/advection/enable=false
+                Kernels/ctrl_advection/enable=true
+                Kernels/ctrl_advection/type=CtrlConservativeTemperatureAdvection
+                BCs/inlet/type=TemperatureInflowBC
+                BCs/outlet/type=TemperatureOutflowBC
+                Materials/rho/expression=2
+                Materials/cp/expression=3
+                Outputs/file_base=ctrl_temperature_out'
+    exodiff = 'ctrl_temperature_out.e'
+    requirement = 'The system shall advect enthalpy in conservative form using a controllable constant velocity.'
+  []
+  [postprocessor_temperature_inlet]
+    type = Exodiff
+    input = 'conservative_advection.i'
+    cli_args = 'Kernels/advection/type=ConservativeTemperatureAdvection
+                BCs/inlet/enable=false
+                BCs/pp_inlet/enable=true
+                BCs/pp_inlet/type=PostprocessorTemperatureInflowBC
+                BCs/outlet/type=TemperatureOutflowBC
+                Materials/rho/expression=2
+                Materials/cp/expression=3
+                Outputs/file_base=pp_temperature_inlet_out'
+    exodiff = 'pp_temperature_inlet_out.e'
+    requirement = 'The system shall set the enthalpy inflow of an advected temperature from a postprocessor value.'
+  []
+  [temperature_jacobian]
+    type = PetscJacobianTester
+    input = 'conservative_advection.i'
+    run_sim = true
+    cli_args = 'Kernels/advection/type=ConservativeTemperatureAdvection
+                BCs/inlet/type=TemperatureInflowBC
+                BCs/outlet/type=TemperatureOutflowBC
+                Materials/rho/expression=1+0.1*u
+                Materials/cp/expression=1+0.05*u'
+    requirement = 'The system shall provide an exact Jacobian for conservative enthalpy advection with temperature-dependent density and specific heat.'
+  []
+  [ctrl_temperature_jacobian]
+    type = PetscJacobianTester
+    input = 'conservative_advection.i'
+    run_sim = true
+    cli_args = 'Kernels/advection/enable=false
+                Kernels/ctrl_advection/enable=true
+                Kernels/ctrl_advection/type=CtrlConservativeTemperatureAdvection
+                BCs/inlet/type=TemperatureInflowBC
+                BCs/outlet/type=TemperatureOutflowBC
+                Materials/rho/expression=1+0.1*u
+                Materials/cp/expression=1+0.05*u'
+    requirement = 'The system shall provide an exact Jacobian for controllable conservative enthalpy advection with temperature-dependent properties.'
+  []
+[]

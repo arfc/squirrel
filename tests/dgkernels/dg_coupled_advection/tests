@@ -1,0 +1,16 @@
+[Tests]
+  [dg_coupled_advection]
+    type = Exodiff
+    input = 'dg_coupled_advection.i'
+    exodiff = 'dg_coupled_advection_out.e'
+    requirement = 'The system shall advect a scalar with upwind discontinuous Galerkin fluxes using a velocity supplied as a variable field.'
+  []
+  [faster_flow]
+    type = Exodiff
+    input = 'dg_coupled_advection.i'
+    cli_args = 'v=2
+                Outputs/file_base=faster_flow_out'
+    exodiff = 'faster_flow_out.e'
+    requirement = 'The system shall halve the concentration step across each cell when the coupled advecting velocity doubles.'
+  []
+[]

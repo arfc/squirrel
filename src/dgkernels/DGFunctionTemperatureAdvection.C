@@ -7,6 +7,8 @@ DGFunctionTemperatureAdvection::validParams()
 {
   InputParameters params = DGFunctionConvection::validParams();
   params.addClassDescription("DG upwinding for func temp convection");
+  params.addParam<MaterialPropertyName>("rho", "rho", "Density material property name");
+  params.addParam<MaterialPropertyName>("cp", "cp", "Specific heat material property name");
   return params;
 }
 

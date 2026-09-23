@@ -152,3 +152,6 @@ squirrel.yaml
 
 # VSCode dotfolder
 .vscode
+
+# JIT files
+**/.jitcache/*

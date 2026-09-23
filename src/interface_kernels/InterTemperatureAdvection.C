@@ -42,12 +42,12 @@ InterTemperatureAdvection::computeQpResidual(Moose::DGResidualType type)
       if (vdotn >= 0)
         r += vdotn * _u[_qp] * _test[_i][_qp];
       else
-        r += vdotn * _neighbor_value[_qp] * _test[_i][_qp] - _heat_source;
+        r += (vdotn * _neighbor_value[_qp] - _heat_source) * _test[_i][_qp];
       break;
 
     case Moose::Neighbor:
       if (vdotn >= 0)
-        r -= vdotn * _u[_qp] * _test_neighbor[_i][_qp] - _heat_source;
+        r -= (vdotn * _u[_qp] - _heat_source) * _test_neighbor[_i][_qp];
       else
         r -= vdotn * _neighbor_value[_qp] * _test_neighbor[_i][_qp];
       break;

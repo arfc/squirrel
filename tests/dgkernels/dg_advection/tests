@@ -1,0 +1,33 @@
+[Tests]
+  [function_convection]
+    type = Exodiff
+    input = 'dg_advection.i'
+    exodiff = 'dg_advection_out.e'
+    requirement = 'The system shall advect a scalar with upwind discontinuous Galerkin fluxes using a function velocity.'
+  []
+  [function_temperature_advection]
+    type = Exodiff
+    input = 'dg_advection.i'
+    cli_args = 'DGKernels/function_advection/type=DGFunctionTemperatureAdvection
+                BCs/inlet/type=TemperatureInflowBC
+                BCs/outlet/type=TemperatureOutflowBC
+                Materials/rho/expression=2
+                Materials/cp/expression=3
+                Outputs/file_base=function_temperature_out'
+    exodiff = 'function_temperature_out.e'
+    requirement = 'The system shall advect enthalpy with upwind discontinuous Galerkin fluxes using a function velocity scaled by density and specific heat.'
+  []
+  [temperature_advection]
+    type = Exodiff
+    input = 'dg_advection.i'
+    cli_args = 'DGKernels/function_advection/enable=false
+                DGKernels/advection/enable=true
+                BCs/inlet/type=TemperatureInflowBC
+                BCs/outlet/type=TemperatureOutflowBC
+                Materials/rho/expression=2
+                Materials/cp/expression=3
+                Outputs/file_base=temperature_out'
+    exodiff = 'temperature_out.e'
+    requirement = 'The system shall advect enthalpy with upwind discontinuous Galerkin fluxes using a constant velocity vector.'
+  []
+[]

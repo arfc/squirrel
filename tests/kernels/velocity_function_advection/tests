@@ -1,0 +1,31 @@
+[Tests]
+  [scalar]
+    type = Exodiff
+    input = 'velocity_function_advection.i'
+    exodiff = 'velocity_function_advection_out.e'
+    requirement = 'The system shall advect a scalar in conservative form using a spatially varying velocity supplied as functions.'
+  []
+  [temperature]
+    type = Exodiff
+    input = 'velocity_function_advection.i'
+    cli_args = 'Kernels/advection/type=VelocityFunctionTemperatureAdvection
+                BCs/inlet/type=PostprocessorVelocityFunctionTemperatureInflowBC
+                BCs/outlet/type=VelocityFunctionTemperatureOutflowBC
+                Materials/rho/expression=2
+                Materials/cp/expression=3
+                Outputs/file_base=temperature_out'
+    exodiff = 'temperature_out.e'
+    requirement = 'The system shall advect enthalpy using a function velocity, scaling the advection, inflow, and outflow terms by the density and specific heat.'
+  []
+  [temperature_jacobian]
+    type = PetscJacobianTester
+    input = 'velocity_function_advection.i'
+    run_sim = true
+    cli_args = 'Kernels/advection/type=VelocityFunctionTemperatureAdvection
+                BCs/inlet/type=PostprocessorVelocityFunctionTemperatureInflowBC
+                BCs/outlet/type=VelocityFunctionTemperatureOutflowBC
+                Materials/rho/expression=1+0.1*u
+                Materials/cp/expression=1+0.05*u'
+    requirement = 'The system shall provide an exact Jacobian for function-velocity enthalpy advection with temperature-dependent properties.'
+  []
+[]
