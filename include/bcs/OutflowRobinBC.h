@@ -2,10 +2,10 @@
 
 #include "IntegratedBC.h"
 
-class RobinBC : public IntegratedBC
+class OutflowRobinBC : public IntegratedBC
 {
 public:
-  RobinBC(const InputParameters & parameters);
+  OutflowRobinBC(const InputParameters & parameters);
 
   static InputParameters validParams();
 
