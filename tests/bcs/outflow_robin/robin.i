@@ -1,5 +1,5 @@
 # Advection-diffusion of u down a channel with a Dirichlet inlet and an open
-# outlet. The RobinBC lets u leave at a rate proportional to its local value,
+# outlet. The OutflowRobinBC lets u leave at a rate proportional to its local value,
 # so the profile decays toward the outlet instead of staying flat.
 
 v = 1
@@ -39,7 +39,7 @@ v = 1
     value = 1
   []
   [outlet]
-    type = RobinBC
+    type = OutflowRobinBC
     variable = u
     boundary = right
     velocity = ${v}
